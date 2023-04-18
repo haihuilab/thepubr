@@ -1,5 +1,13 @@
-
-# Theme for publication
+#' Theme for publication
+#'
+#' @param base_size default font size is 12
+#' @param base_family default font is "Arial
+#' @param axis
+#' @param grid plot has grid
+#' @param legend.position default is "none", could be "top", "right", "bottom", or "left"
+#'
+#' @export
+#'
 theme_publication <- function(base_size = 12,
                               base_family = "Helvetica",
                               axis = TRUE,
@@ -49,17 +57,30 @@ theme_publication <- function(base_size = 12,
           strip.text = element_text(face="bold"))
 }
 
-
+#' Custom theme
+#'
+#' @param base_size default font size is 12
+#' @param base_family default font is :Arial
+#' @param border TRUE: plot has border
+#' @param axis
+#' @param grid
+#' @param legend.position
+#' @param facet_background
+#' @param facet_border
+#' @param facet_color facet_color
+#'
+#' @export
+#'
 # Border
 theme_border <- function(base_size = 12,
-                      base_family = "Helvetica",
-                      border = TRUE,
-                      axis = TRUE,
-                      grid = FALSE,
-                      legend.position = 'none',
-                      facet_background = 'dodgerblue4',
-                      facet_border = 'black',
-                      facet_color = 'white') {
+                         base_family = "Helvetica",
+                         border = TRUE,
+                         axis = TRUE,
+                         grid = FALSE,
+                         legend.position = 'none',
+                         facet_background = 'dodgerblue4',
+                         facet_border = 'black',
+                         facet_color = 'white') {
   if(border) {
     border_element <- element_rect(color = 'black', fill = NA)
   } else {
@@ -104,7 +125,12 @@ theme_border <- function(base_size = 12,
 }
 
 
-
+#' Custom fill color
+#'
+#' @param values a list of color values
+#'
+#' @export
+#'
 # Fill color
 scale_fill_publication <- function(...){
   library(scales)
@@ -113,6 +139,12 @@ scale_fill_publication <- function(...){
 }
 
 
+#' Custom discrete color
+#'
+#' @param values a list of color values
+#'
+#' @export
+#'
 # Discrete color
 scale_color_publication <- function(...){
   library(scales)
@@ -121,8 +153,14 @@ scale_color_publication <- function(...){
 }
 
 
+#' Custom pallete color
+#'
+#' @param palette 1 for "RdBu"; 2 for todo
+#'
+#' @export
+#'
 # Pallete
-color_palette2 <- function(palette = 1) {
+color_palette <- function(palette = 1) {
 
   if(palette == 1 | palette == 'RdBu') {
     colors <- RColorBrewer::brewer.pal(n = 11, name = 'RdBu')[c(3,9)]
