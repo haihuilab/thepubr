@@ -1,39 +1,31 @@
-#' Theme for publication
-#'
-#' @param base_size 
-#' @param base_family 
-#' @param axis 
-#' @param grid 
-#' @param legend 
-#'
-#' @export
-#'
-theme_publication <- function(base_size = 12, 
-                              base_family = "Helvetica", 
-                              axis = TRUE, 
-                              grid = FALSE, 
+
+# Theme for publication
+theme_publication <- function(base_size = 12,
+                              base_family = "Helvetica",
+                              axis = TRUE,
+                              grid = FALSE,
                               legend.position = 'none',
                               rotate_text = 'none') {
-  
+
   if(axis) {
     axis_element <- element_line(color = 'black')
   } else {
     axis_element <- element_blank()
   }
-  
+
   if(grid) {
     grid_element <- element_line(color = 'grey90')
   } else {
     grid_element <- element_blank()
   }
-  
+
   if(rotate_text == 'x') {
     x_axis_text <- element_text(angle = 90, hjust = 1)
   } else {
     x_axis_text <- element_text()
   }
-  
-  ggthemes::theme_foundation(base_size = base_size, base_family = base_family) + 
+
+  ggthemes::theme_foundation(base_size = base_size, base_family = base_family) +
     theme(plot.title = element_text(face = "plain", size = 14, hjust = 0.5),
           text = element_text(),
           panel.background = element_rect(color = NA),
@@ -57,26 +49,13 @@ theme_publication <- function(base_size = 12,
           strip.text = element_text(face="bold"))
 }
 
-#' Custom theme
-#'
-#' @param base_size 
-#' @param base_family 
-#' @param border 
-#' @param axis 
-#' @param grid 
-#' @param legend.position 
-#' @param facet_background 
-#' @param facet_border 
-#' @param facet_color 
-#'
-#' @export
-#'
+
 # Border
-theme_border <- function(base_size = 12, 
-                      base_family = "Helvetica", 
+theme_border <- function(base_size = 12,
+                      base_family = "Helvetica",
                       border = TRUE,
-                      axis = TRUE, 
-                      grid = FALSE, 
+                      axis = TRUE,
+                      grid = FALSE,
                       legend.position = 'none',
                       facet_background = 'dodgerblue4',
                       facet_border = 'black',
@@ -86,21 +65,21 @@ theme_border <- function(base_size = 12,
   } else {
     border_element <- element_rect(color = NA, fill = NA)
   }
-  
+
   if(axis) {
     axis_element <- element_line(color = 'black')
   } else {
     axis_element <- element_blank()
   }
-  
+
   if(grid) {
     grid_element <- element_line(color = 'grey90')
   } else {
     grid_element <- element_blank()
   }
-  
-  
-  ggthemes::theme_foundation(base_size = base_size, base_family = base_family) + 
+
+
+  ggthemes::theme_foundation(base_size = base_size, base_family = base_family) +
     theme(plot.title = element_text(face = "plain", size = 14, hjust = 0.5),
           plot.subtitle = element_text(face = 'plain', size = 12, hjust = 0.5),
           text = element_text(),
@@ -124,19 +103,13 @@ theme_border <- function(base_size = 12,
           strip.text = element_text(face = "plain", color = facet_color))
 }
 
-#' Title
-#'
-#' @param palette 
-#'
-#' @export
-#'
-#' @examples
+
 
 # Fill color
 scale_fill_publication <- function(...){
   library(scales)
   discrete_scale("fill","publication",manual_pal(values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c","#662506","#984ea3","#fb9a99", "#ffff33", "#a6cee3")), ...)
-  
+
 }
 
 
@@ -144,17 +117,17 @@ scale_fill_publication <- function(...){
 scale_color_publication <- function(...){
   library(scales)
   discrete_scale("color","publication",manual_pal(values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c","#662506","#984ea3","#fb9a99", "#ffff33", "#a6cee3")), ...)
-  
+
 }
 
 
 # Pallete
 color_palette2 <- function(palette = 1) {
-  
+
   if(palette == 1 | palette == 'RdBu') {
     colors <- RColorBrewer::brewer.pal(n = 11, name = 'RdBu')[c(3,9)]
   }
-  
+
   colors
 }
 
