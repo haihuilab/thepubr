@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of CustomThemePublication is to …
+The goal of CustomThemePublication is to set default theme color... for publication-scale output plot…
 
 ## Installation
 
@@ -26,6 +26,7 @@ library(CustomThemePublication)
 ## basic example code
 library(ggplot2)
 library(gridExtra)
+theme_set(theme_publication()) # set default theme
 pdf("example_plot.pdf", family = "Helvetica", width = 2.5, height = 2.5)
 scatter <- ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + geom_point(size=3, alpha = 0.7) + labs(title="Scatter Plot")
 # grid.arrange(scatter,(scatter + scale_color_publication() + theme_publication()),nrow = 1)
@@ -62,7 +63,7 @@ example workflow can be found here:
 
 You can also embed plots, for example:
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+<img src="man/figures/example_plot.pdf" width="100%" />
 
 In that case, don’t forget to commit and push the resulting figure
 files, so they display on GitHub and CRAN.
