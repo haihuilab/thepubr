@@ -12,7 +12,7 @@ The goal of CustomThemePublication is to set default theme color... for publicat
 
 You can install the development version of CustomThemePublication like
 so:
-
+devtools::install_github("HHZhangLab/CustomThemePublication")
 ``` r
 # FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
 ```
@@ -63,7 +63,7 @@ example workflow can be found here:
 
 You can also embed plots, for example:
 
-<img src="man/figures/example_plot.pdf" width="100%" />
+<img src="man/figures/example_plot.png" width="100%" />
 
 In that case, don’t forget to commit and push the resulting figure
 files, so they display on GitHub and CRAN.
