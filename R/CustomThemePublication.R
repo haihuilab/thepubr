@@ -169,21 +169,102 @@ color_palette <- function(palette = 1) {
   colors
 }
 
+
+#' Custom save figure
+#'
+#' @param filename subfolder/filename
+#' @param directory default is parent directory
+#' @param size default is "small", could be "small", "medium", "large", _ "wide", "long"
+#'
+#' @export
+#'
+# Save custom figure size
+save_figure <- function(plot = last_plot(),
+                        filename,
+                        device = "pdf",
+                        units = 'in',
+                        directory = dirname(getwd()),
+                        size = 'small',
+                        gg = TRUE,
+                        overwrite = TRUE) {
+
+  # Some default sizes
+  if(size == 'small') {
+    w = 2.5
+    h = 2.5
+  } else if(size == 'medium') {
+    w = 5
+    h = 5
+  } else if(size == 'large') {
+    w = 10
+    h = 10
+  } else if(size == 'small_wide') {
+    w = 4
+    h = 2.5
+  } else if(size == 'medium_wide') {
+    w = 8
+    h = 5
+  } else if(size == 'large_wide') {
+    w = 16
+    h = 10
+  } else if(size == 'small_long') {
+    w = 2.5
+    h = 4
+  } else if(size == 'medium_long') {
+    w = 5
+    h = 8
+  } else if(size == 'large_long') {
+    w = 10
+    h = 16
+  }
+
+  # prevent overwrites
+  i = 0
+  prefix <- filename
+  map(device, function(x) {
+    if(!overwrite){
+      while(file.exists(paste0(directory, filename,'.', x)))
+      {
+        i = i + 1
+        ifilename = paste0(prefix, i)
+      }
+    }
+    cat('Saving as', paste0(filename, '.', x), '\n')
+
+    filename = paste0(filename, '.', x)
+    if(gg) { # for ggplot objects
+      if(x == 'pdf') {
+        x <- cairo_pdf
+      }
+      ggsave(filename = paste0(directory,"/", filename), plot = plot, width = w, height = h, units = units)}
+    else { # for others
+      dev.copy(png, file = paste0(directory,"/", filename), width = w, height = h, units = units, res = 600)
+      dev.off() }
+
+  })
+}
+
+
 #---------------------------------
 # Examples
-library(ggplot2)
-library(gridExtra)
-pdf("example_plot.pdf", family = "Helvetica", width = 2.5, height = 2.5)
-scatter <- ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + geom_point(size=3, alpha = 0.7) + labs(title="Scatter Plot")
-# grid.arrange(scatter,(scatter + scale_color_publication() + theme_publication()),nrow = 1)
-grid.arrange((scatter + scale_color_publication() + theme_publication()),nrow = 1)
-
-bar <- ggplot(mtcars, aes(factor(carb),fill = factor(carb))) + geom_bar(alpha = 0.7) + labs(title = "Bar Plot")
-# grid.arrange(bar,(bar + scale_fill_publication() + theme_publication()),nrow = 1)
-grid.arrange((bar + scale_fill_publication() + theme_publication()),nrow = 1)
-
-dev.off()
-
+# library(ggplot2)
+# library(gridExtra)
+# library(tidyverse)
+#
+# scatter <- ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + geom_point(size=3, alpha = 0.7) + labs(title="Scatter Plot")
+# g1 <- grid.arrange(scatter,(scatter + scale_color_publication() + theme_publication()),nrow = 1)
+# # Small
+# save_figure(g1, filename = "example_plot_small", size = "small_wide")
+#
+# g2 <- grid.arrange((scatter + scale_color_publication() + theme_publication(base_size = 24)),nrow = 1)
+# # Medium
+# save_figure(g2, filename = "example_plot_medium", size = "medium", device = "png")
+#
+# bar <- ggplot(mtcars, aes(factor(carb),fill = factor(carb))) + geom_bar(alpha = 0.7) + labs(title = "Bar Plot")
+# # grid.arrange(bar,(bar + scale_fill_publication() + theme_publication()),nrow = 1)
+# g3 <- grid.arrange((bar + scale_fill_publication() + theme_publication(base_size = 48)),nrow = 1)
+# # large
+# save_figure(g3, filename = "example_plot_large", size = "large")
 
 
 

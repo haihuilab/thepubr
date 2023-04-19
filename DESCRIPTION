@@ -16,3 +16,5 @@ Imports:
     ggthemes,
     gridExtra,
     testthat
+Depends: 
+    tidyverse

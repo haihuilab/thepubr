@@ -24,21 +24,26 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(CustomThemePublication)
 ## basic example code
+# Examples
 library(ggplot2)
 library(gridExtra)
-theme_set(theme_publication()) # set default theme
-pdf("example_plot.pdf", family = "Helvetica", width = 2.5, height = 2.5)
+library(tidyverse)
+
 scatter <- ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + geom_point(size=3, alpha = 0.7) + labs(title="Scatter Plot")
-# grid.arrange(scatter,(scatter + scale_color_publication() + theme_publication()),nrow = 1)
-grid.arrange((scatter + scale_color_publication() + theme_publication()),nrow = 1)
+g1 <- grid.arrange(scatter,(scatter + scale_color_publication() + theme_publication()),nrow = 1)
+# Small
+save_figure(g1, filename = "example_plot_small", size = "small_wide")
+
+g2 <- grid.arrange((scatter + scale_color_publication() + theme_publication(base_size = 24)),nrow = 1)
+# Medium
+save_figure(g2, filename = "example_plot_medium", size = "medium", device = "png")
 
 bar <- ggplot(mtcars, aes(factor(carb),fill = factor(carb))) + geom_bar(alpha = 0.7) + labs(title = "Bar Plot")
 # grid.arrange(bar,(bar + scale_fill_publication() + theme_publication()),nrow = 1)
-grid.arrange((bar + scale_fill_publication() + theme_publication()),nrow = 1)
+g3 <- grid.arrange((bar + scale_fill_publication() + theme_publication(base_size = 48)),nrow = 1)
+# large
+save_figure(g3, filename = "example_plot_large", size = "large")
 
-dev.off()
-#> png 
-#>   2
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`?
@@ -63,7 +68,7 @@ example workflow can be found here:
 
 You can also embed plots, for example:
 
-<img src="man/figures/example_plot.png" width="50%" />
+<img src="man/figures/example_plot_medium.png" width="50%" />
 
 In that case, don’t forget to commit and push the resulting figure
 files, so they display on GitHub and CRAN.
