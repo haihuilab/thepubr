@@ -14,7 +14,7 @@ You can install the development version of CustomThemePublication like
 so:
 
 ``` r
-devtools::install_github("HHZhangLab/CustomThemePublication")
+devtools::install_github("haihuilab/thepubr")
 ```
 
 ## Example
@@ -22,7 +22,7 @@ devtools::install_github("HHZhangLab/CustomThemePublication")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(CustomThemePublication)
+library(thepubr)
 ## basic example code
 # Examples
 library(ggplot2)
