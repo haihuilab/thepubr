@@ -1,16 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# CustomThemePublication
+# Custom Theme for Publication (thpubr)
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of CustomThemePublication is to set default theme, color, axis... for publication-scale output plot.
+The goal of thepubr is to set default theme, color, axis... for publication-scale output plot.
 
 ## Installation
 
-You can install the development version of CustomThemePublication like
+You can install the development version of thepubr like
 so:
 
 ``` r
