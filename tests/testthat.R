@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(CustomThemePublication)
+library(thepubr)
 
-test_check("CustomThemePublication")
+test_check("thepubr")
