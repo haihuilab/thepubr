@@ -6,7 +6,7 @@
 \usage{
 theme_border(
   base_size = 12,
-  base_family = "Helvetica",
+  base_family = "HelveticaNeueLT Std",
   border = TRUE,
   axis = TRUE,
   grid = FALSE,
@@ -19,7 +19,7 @@ theme_border(
 \arguments{
 \item{base_size}{default font size is 12}
 
-\item{base_family}{default font is :Arial}
+\item{base_family}{default font is : "HelveticaNeueLT Std"}
 
 \item{border}{TRUE: plot has border}
 

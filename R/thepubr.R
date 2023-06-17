@@ -1,15 +1,16 @@
 #' Theme for publication
 #'
 #' @param base_size default font size is 12
-#' @param base_family default font is "Arial
+#' @param base_family default font is "HelveticaNeueLT Std" that requires to be install in the system
 #' @param axis
 #' @param grid plot has grid
 #' @param legend.position default is "none", could be "top", "right", "bottom", or "left"
 #'
 #' @export
 #'
+
 theme_publication <- function(base_size = 12,
-                              base_family = "Helvetica",
+                              base_family = "HelveticaNeueLT Std",
                               axis = TRUE,
                               grid = FALSE,
                               legend.position = 'none',
@@ -35,7 +36,7 @@ theme_publication <- function(base_size = 12,
 
   ggthemes::theme_foundation(base_size = base_size, base_family = base_family) +
     theme(plot.title = element_text(face = "plain", size = 14, hjust = 0.5),
-          text = element_text(),
+          text = element_text(family = base_family),
           panel.background = element_rect(color = NA),
           plot.background = element_rect(color = NA),
           panel.border = element_blank(),
@@ -60,7 +61,7 @@ theme_publication <- function(base_size = 12,
 #' Custom theme
 #'
 #' @param base_size default font size is 12
-#' @param base_family default font is :Arial
+#' @param base_family default font is : "HelveticaNeueLT Std"
 #' @param border TRUE: plot has border
 #' @param axis
 #' @param grid
@@ -73,7 +74,7 @@ theme_publication <- function(base_size = 12,
 #'
 # Border
 theme_border <- function(base_size = 12,
-                         base_family = "Helvetica",
+                         base_family = "HelveticaNeueLT Std",
                          border = TRUE,
                          axis = TRUE,
                          grid = FALSE,
@@ -81,6 +82,7 @@ theme_border <- function(base_size = 12,
                          facet_background = 'dodgerblue4',
                          facet_border = 'black',
                          facet_color = 'white') {
+
   if(border) {
     border_element <- element_rect(color = 'black', fill = NA)
   } else {
@@ -103,7 +105,7 @@ theme_border <- function(base_size = 12,
   ggthemes::theme_foundation(base_size = base_size, base_family = base_family) +
     theme(plot.title = element_text(face = "plain", size = 14, hjust = 0.5),
           plot.subtitle = element_text(face = 'plain', size = 12, hjust = 0.5),
-          text = element_text(),
+          text = element_text(family = base_family),
           panel.background = element_rect(color = 'white'),
           plot.background = element_rect(color = 'white'),
           panel.border = border_element,
@@ -236,7 +238,7 @@ save_figure <- function(plot = last_plot(),
       if(x == 'pdf') {
         x <- cairo_pdf
       }
-      ggsave(filename = paste0(directory,"/", filename), plot = plot, width = w, height = h, units = units)}
+      ggsave(filename = paste0(directory,"/", filename), device = x, plot = plot, width = w, height = h, units = units)}
     else { # for others
       dev.copy(png, file = paste0(directory,"/", filename), width = w, height = h, units = units, res = 600)
       dev.off() }
@@ -250,11 +252,12 @@ save_figure <- function(plot = last_plot(),
 # library(ggplot2)
 # library(gridExtra)
 # library(tidyverse)
-#
+
 # scatter <- ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + geom_point(size=3, alpha = 0.7) + labs(title="Scatter Plot")
 # g1 <- grid.arrange(scatter,(scatter + scale_color_publication() + theme_publication()),nrow = 1)
 # # Small
 # save_figure(g1, filename = "example_plot_small", size = "small_wide")
+
 #
 # g2 <- grid.arrange((scatter + scale_color_publication() + theme_publication(base_size = 24)),nrow = 1)
 # # Medium

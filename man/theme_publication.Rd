@@ -6,7 +6,7 @@
 \usage{
 theme_publication(
   base_size = 12,
-  base_family = "Helvetica",
+  base_family = "HelveticaNeueLT Std",
   axis = TRUE,
   grid = FALSE,
   legend.position = "none",
@@ -16,7 +16,7 @@ theme_publication(
 \arguments{
 \item{base_size}{default font size is 12}
 
-\item{base_family}{default font is "Arial}
+\item{base_family}{default font is "HelveticaNeueLT Std" that requires to be install in the system}
 
 \item{grid}{plot has grid}
 

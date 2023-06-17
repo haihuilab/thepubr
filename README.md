@@ -1,21 +1,21 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Custom Theme for Publication (thpubr)
+# Custom Theme for Publication (thepubr)
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of thepubr is to set default theme, color, axis... for publication-scale output plot.
-
+The goal of thepubr is to custom theme, axis, font, size for publication output of ggplot2.
 ## Installation
 
-You can install the development version of thepubr like
-so:
+You can install the development version of thepubr like so:
 
 ``` r
 devtools::install_github("haihuilab/thepubr")
 ```
+## Install fonts in Windows
+We change the ggplot2 default `Arial` font to `HelveticaNeueLTStd-Roman` font. First, we install `HelveticaNeueLTStd-Roman.ttf` in windows or ubuntu from main folder.
 
 ## Example
 
