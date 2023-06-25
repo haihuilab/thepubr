@@ -13,8 +13,8 @@ theme_publication <- function(base_size = 12,
                               base_family = "HelveticaNeueLT Std",
                               axis = TRUE,
                               grid = FALSE,
-                              legend.position = 'none',
-                              rotate_text = 'none') {
+                              legend.position = NULL,
+                              rotate_text = NULL) {
 
   if(axis) {
     axis_element <- element_line(color = 'black')
@@ -28,8 +28,8 @@ theme_publication <- function(base_size = 12,
     grid_element <- element_blank()
   }
 
-  if(rotate_text == 'x') {
-    x_axis_text <- element_text(angle = 90, hjust = 1)
+  if(rotate_text) {
+    x_axis_text <- element_text(angle = rotate_text, hjust = 1)
   } else {
     x_axis_text <- element_text()
   }
