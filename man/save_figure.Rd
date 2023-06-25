@@ -20,7 +20,7 @@ save_figure(
 
 \item{directory}{default is parent directory}
 
-\item{size}{default is "small", could be "small", "medium", "large", _ "wide", "long"}
+\item{size}{could be "small", "medium", "large"; "small_wide", "small_long"...}
 }
 \description{
 Custom save figure
