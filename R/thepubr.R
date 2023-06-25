@@ -44,7 +44,6 @@ theme_publication <- function(base_size = 12,
           axis.title.y = element_text(angle = 90, vjust = 0.5),
           axis.title.x = element_text(vjust = 0),
           axis.text = element_text(color = 'black'),
-          axis.text.x = x_axis_text,
           axis.line = axis_element,
           panel.grid.major = grid_element,
           panel.grid.minor = element_blank(),
@@ -55,7 +54,8 @@ theme_publication <- function(base_size = 12,
           legend.title = element_blank(), #element_text(face="italic"),
           legend.position = legend.position,
           strip.background = element_rect(color="#f0f0f0",fill="#f0f0f0"),
-          strip.text = element_text(face="bold"))
+          strip.text = element_text(face="bold"),
+          axis.text.x = x_axis_text) # rotation
 }
 
 #' Custom theme
