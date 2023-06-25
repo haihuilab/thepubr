@@ -176,7 +176,7 @@ color_palette <- function(palette = 1) {
 #'
 #' @param filename subfolder/filename
 #' @param directory default is parent directory
-#' @param size default is "small", could be "small", "medium", "large", _ "wide", "long"
+#' @param size could be "small", "medium", "large"; "small_wide", "small_long"...
 #'
 #' @export
 #'
