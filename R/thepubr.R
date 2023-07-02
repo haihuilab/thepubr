@@ -133,42 +133,44 @@ theme_border <- function(base_size = 12,
 #'
 #' @export
 #'
-# Fill color
-scale_fill_publication <- function(...){
+# scale_color_publication
+scale_color_publication <- function(alpha = 1, ...) {
   library(scales)
-  discrete_scale("fill","publication",manual_pal(values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c","#662506","#984ea3","#fb9a99", "#ffff33", "#a6cee3")), ...)
+  values = c("#2F4F4F",  "#660066", "#336600",  "#386cb0", "#A52A2A",
+             "#D2691E", "#7fc97f", "#fb9a99","#B8860B", "#CD1076",
+             "aquamarine4", "#193300", "#0000FF", "#003366", "#660000",
+             "#663300", "#666600", "#7FFF00", "#330066", "#00FFFF"
+             "#838B8B", "#330019", "#ffff33",  "#DEB887", "#5F9EA0",
+             "#FFB90F", "#8B4513", "#8B2323", "#FF7F50", "#a6cee3",
+             "#66B2FF", "#8B7D6B", "#FF3319","#E5CCFF",  "#CCCC00")
+  if (alpha == 1) {
+    discrete_scale("fill", "publication",
+                 manual_pal(values = values), ...)
+  } else {
+    discrete_scale("fill", "publication",
+                   manual_pal(values = alpha(values = values, alpha = alpha), ...)
+  }
+
+
+  }
 
 }
-
-
-#' Custom discrete color
-#'
-#' @param values a list of color values
-#'
-#' @export
-#'
-# Discrete color
-scale_color_publication <- function(...){
-  library(scales)
-  discrete_scale("color","publication",manual_pal(values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c","#662506","#984ea3","#fb9a99", "#ffff33", "#a6cee3")), ...)
-
-}
-
 
 #' Custom pallete color
 #'
-#' @param palette 1 for "RdBu"; 2 for todo
+#' @param palette 1 for "RdBu"; 2 for "Set3"
 #'
 #' @export
 #'
-# Pallete
+# color_palette
 color_palette <- function(palette = 1) {
 
   if(palette == 1 | palette == 'RdBu') {
-    colors <- RColorBrewer::brewer.pal(n = 11, name = 'RdBu')[c(3,9)]
-  }
-
-  colors
+    colors <- RColorBrewer::brewer.pal(n = 8, name = 'RdBu')
+  } else {
+    colors <- colorRampPalette(RColorBrewer::brewer.pal(n = 12, name = "Set3"))
+}
+  return(colors)
 }
 
 
