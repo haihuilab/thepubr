@@ -39,8 +39,8 @@ g2 <- grid.arrange((scatter + scale_color_publication() + theme_publication(base
 save_figure(g2, filename = "example_plot_medium", size = "medium", device = "png")
 
 bar <- ggplot(mtcars, aes(factor(carb),fill = factor(carb))) + geom_bar(alpha = 0.7) + labs(title = "Bar Plot")
-# grid.arrange(bar,(bar + scale_fill_publication() + theme_publication()),nrow = 1)
-g3 <- grid.arrange((bar + scale_fill_publication() + theme_publication(base_size = 48)),nrow = 1)
+# grid.arrange(bar,(bar + scale_color_publication(alpha = 0.8) + theme_publication()),nrow = 1)
+g3 <- grid.arrange((bar + scale_color_publication() + theme_publication(base_size = 48)),nrow = 1)
 # large
 save_figure(g3, filename = "example_plot_large", size = "large")
 
