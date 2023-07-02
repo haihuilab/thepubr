@@ -9,8 +9,8 @@ theme_publication(
   base_family = "HelveticaNeueLT Std",
   axis = TRUE,
   grid = FALSE,
-  legend.position = "none",
-  rotate_text = "none"
+  legend.position = NULL,
+  rotate_text = NULL
 )
 }
 \arguments{

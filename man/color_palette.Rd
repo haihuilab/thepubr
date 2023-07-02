@@ -7,7 +7,7 @@
 color_palette(palette = 1)
 }
 \arguments{
-\item{palette}{1 for "RdBu"; 2 for todo}
+\item{palette}{1 for "RdBu"; 2 for "Set3"}
 }
 \description{
 Custom pallete color

@@ -2,13 +2,13 @@
 % Please edit documentation in R/thepubr.R
 \name{scale_color_publication}
 \alias{scale_color_publication}
-\title{Custom discrete color}
+\title{Custom fill color}
 \usage{
-scale_color_publication(...)
+scale_color_publication(alpha = 1, ...)
 }
 \arguments{
 \item{values}{a list of color values}
 }
 \description{
-Custom discrete color
+Custom fill color
 }

@@ -139,7 +139,7 @@ scale_color_publication <- function(alpha = 1, ...) {
   values = c("#2F4F4F",  "#660066", "#336600",  "#386cb0", "#A52A2A",
              "#D2691E", "#7fc97f", "#fb9a99","#B8860B", "#CD1076",
              "aquamarine4", "#193300", "#0000FF", "#003366", "#660000",
-             "#663300", "#666600", "#7FFF00", "#330066", "#00FFFF"
+             "#663300", "#666600", "#7FFF00", "#330066", "#00FFFF",
              "#838B8B", "#330019", "#ffff33",  "#DEB887", "#5F9EA0",
              "#FFB90F", "#8B4513", "#8B2323", "#FF7F50", "#a6cee3",
              "#66B2FF", "#8B7D6B", "#FF3319","#E5CCFF",  "#CCCC00")
@@ -148,13 +148,10 @@ scale_color_publication <- function(alpha = 1, ...) {
                  manual_pal(values = values), ...)
   } else {
     discrete_scale("fill", "publication",
-                   manual_pal(values = alpha(values = values, alpha = alpha), ...)
+                   manual_pal(values = alpha(values, alpha)), ...)
+
+          }
   }
-
-
-  }
-
-}
 
 #' Custom pallete color
 #'
@@ -266,8 +263,8 @@ save_figure <- function(plot = last_plot(),
 # save_figure(g2, filename = "example_plot_medium", size = "medium", device = "png")
 #
 # bar <- ggplot(mtcars, aes(factor(carb),fill = factor(carb))) + geom_bar(alpha = 0.7) + labs(title = "Bar Plot")
-# # grid.arrange(bar,(bar + scale_fill_publication() + theme_publication()),nrow = 1)
-# g3 <- grid.arrange((bar + scale_fill_publication() + theme_publication(base_size = 48)),nrow = 1)
+# # grid.arrange(bar,(bar + scale_color_publication() + theme_publication()),nrow = 1)
+# g3 <- grid.arrange((bar + scale_color_publication() + theme_publication(base_size = 48)),nrow = 1)
 # # large
 # save_figure(g3, filename = "example_plot_large", size = "large")
 

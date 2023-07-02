@@ -3,6 +3,5 @@
 export(color_palette)
 export(save_figure)
 export(scale_color_publication)
-export(scale_fill_publication)
 export(theme_border)
 export(theme_publication)
