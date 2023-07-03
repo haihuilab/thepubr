@@ -144,10 +144,10 @@ scale_color_publication <- function(alpha = 1, ...) {
              "#FFB90F", "#8B4513", "#8B2323", "#FF7F50", "#a6cee3",
              "#66B2FF", "#8B7D6B", "#FF3319","#E5CCFF",  "#CCCC00")
   if (alpha == 1) {
-    discrete_scale("fill", "publication",
+    scale_colour_manual("fill", "publication",
                  manual_pal(values = values), ...)
   } else {
-    discrete_scale("fill", "publication",
+    scale_colour_manual("fill", "publication",
                    manual_pal(values = alpha(values, alpha)), ...)
 
           }
