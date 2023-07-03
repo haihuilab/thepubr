@@ -18,6 +18,8 @@ theme_publication(
 
 \item{base_family}{default font is "HelveticaNeueLT Std" that requires to be install in the system}
 
+\item{axis}{TRUE}
+
 \item{grid}{plot has grid}
 
 \item{legend.position}{default is "none", could be "top", "right", "bottom", or "left"}

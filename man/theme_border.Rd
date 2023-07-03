@@ -23,7 +23,17 @@ theme_border(
 
 \item{border}{TRUE: plot has border}
 
-\item{facet_color}{facet_color}
+\item{axis}{TRUE}
+
+\item{grid}{FALSE}
+
+\item{legend.position}{default is none}
+
+\item{facet_background}{defalut is 'dodgerblue4'}
+
+\item{facet_border}{defalut is 'black'}
+
+\item{facet_color}{default is 'white'}
 }
 \description{
 Custom theme

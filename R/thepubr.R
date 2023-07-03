@@ -2,7 +2,7 @@
 #'
 #' @param base_size default font size is 12
 #' @param base_family default font is "HelveticaNeueLT Std" that requires to be install in the system
-#' @param axis
+#' @param axis TRUE
 #' @param grid plot has grid
 #' @param legend.position default is "none", could be "top", "right", "bottom", or "left"
 #'
@@ -63,12 +63,12 @@ theme_publication <- function(base_size = 12,
 #' @param base_size default font size is 12
 #' @param base_family default font is : "HelveticaNeueLT Std"
 #' @param border TRUE: plot has border
-#' @param axis
-#' @param grid
-#' @param legend.position
-#' @param facet_background
-#' @param facet_border
-#' @param facet_color facet_color
+#' @param axis TRUE
+#' @param grid FALSE
+#' @param legend.position default is none
+#' @param facet_background defalut is 'dodgerblue4'
+#' @param facet_border defalut is 'black'
+#' @param facet_color default is 'white'
 #'
 #' @export
 #'
@@ -130,6 +130,7 @@ theme_border <- function(base_size = 12,
 #' Custom fill color
 #'
 #' @param values a list of color values
+#' @param alpha alpha value (0, 1)
 #'
 #' @export
 #'
@@ -216,30 +217,28 @@ save_figure <- function(plot = last_plot(),
     h = 16
   }
 
-  # prevent overwrites
+  # prevent overwrites----------------------------------------------------------
   i = 0
   prefix <- filename
-  map(device, function(x) {
-    if(!overwrite){
-      while(file.exists(paste0(directory, filename,'.', x)))
+  if(!overwrite) {
+      while(file.exists(paste0(directory, filename,'.', device)))
       {
         i = i + 1
         ifilename = paste0(prefix, i)
       }
     }
-    cat('Saving as', paste0(filename, '.', x), '\n')
+    cat('Saving as', paste0(filename, '.', device), '\n')
 
-    filename = paste0(filename, '.', x)
+    filename = paste0(filename, '.', device)
     if(gg) { # for ggplot objects
-      if(x == 'pdf') {
-        x <- cairo_pdf
+      if(device == 'pdf') {
+        device <- cairo_pdf
       }
-      ggsave(filename = paste0(directory,"/", filename), device = x, plot = plot, width = w, height = h, units = units)}
+      ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units)}
     else { # for others
-      dev.copy(png, file = paste0(directory,"/", filename), width = w, height = h, units = units, res = 600)
-      dev.off() }
+      ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units, res = 600)
+      }
 
-  })
 }
 
 

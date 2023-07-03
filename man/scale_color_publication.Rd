@@ -7,6 +7,8 @@
 scale_color_publication(alpha = 1, ...)
 }
 \arguments{
+\item{alpha}{alpha value (0, 1)}
+
 \item{values}{a list of color values}
 }
 \description{
