@@ -135,7 +135,6 @@ theme_border <- function(base_size = 12,
 #'
 # scale_color_publication
 scale_color_publication <- function(alpha = 1, ...) {
-  library(scales)
   values = c("#2F4F4F",  "#660066", "#336600",  "#386cb0", "#A52A2A",
              "#D2691E", "#7fc97f", "#fb9a99","#B8860B", "#CD1076",
              "aquamarine4", "#193300", "#0000FF", "#003366", "#660000",
@@ -144,14 +143,12 @@ scale_color_publication <- function(alpha = 1, ...) {
              "#FFB90F", "#8B4513", "#8B2323", "#FF7F50", "#a6cee3",
              "#66B2FF", "#8B7D6B", "#FF3319","#E5CCFF",  "#CCCC00")
   if (alpha == 1) {
-    scale_colour_manual("fill", "publication",
-                 manual_pal(values = values), ...)
+    scale_colour_manual(values = values, ...)
   } else {
-    scale_colour_manual("fill", "publication",
-                   manual_pal(values = alpha(values, alpha)), ...)
+    scale_colour_manual(values = alpha(values, alpha), ...)
 
-          }
   }
+}
 
 #' Custom pallete color
 #'
