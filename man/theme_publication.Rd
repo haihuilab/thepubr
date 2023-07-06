@@ -9,7 +9,7 @@ theme_publication(
   base_family = "HelveticaNeueLT Std",
   axis = TRUE,
   grid = FALSE,
-  legend.position = NULL,
+  legend.position = "top",
   rotate_text = NULL
 )
 }

@@ -10,7 +10,7 @@ theme_border(
   border = TRUE,
   axis = TRUE,
   grid = FALSE,
-  legend.position = "none",
+  legend.position = "top",
   facet_background = "dodgerblue4",
   facet_border = "black",
   facet_color = "white",
