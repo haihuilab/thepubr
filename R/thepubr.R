@@ -83,7 +83,7 @@ theme_border <- function(base_size = 12,
                          facet_border = 'black',
                          facet_color = 'white',
                          rotate_text = NULL) {
-  theme_publication(base_size = base_size,
+  theme_pub <- theme_publication(base_size = base_size,
                      base_family = base_family,
                      axis = axis,
                      grid = grid,
@@ -108,6 +108,11 @@ theme_border <- function(base_size = 12,
     grid_element <- element_blank()
   }
 
+  theme_pub +
+    theme(panel.background = border_element,
+          plot.background = border_element,
+          axis.line = axis_element,
+          panel.grid = grid_element)
 }
 
 
