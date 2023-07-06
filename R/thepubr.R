@@ -13,7 +13,7 @@ theme_publication <- function(base_size = 12,
                               base_family = "HelveticaNeueLT Std",
                               axis = TRUE,
                               grid = FALSE,
-                              legend.position = NULL,
+                              legend.position = "top",
                               rotate_text = NULL) {
 
   if(axis) {
@@ -78,7 +78,7 @@ theme_border <- function(base_size = 12,
                          border = TRUE,
                          axis = TRUE,
                          grid = FALSE,
-                         legend.position = 'none',
+                         legend.position = "top",
                          facet_background = 'dodgerblue4',
                          facet_border = 'black',
                          facet_color = 'white',
