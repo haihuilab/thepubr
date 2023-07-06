@@ -81,7 +81,14 @@ theme_border <- function(base_size = 12,
                          legend.position = 'none',
                          facet_background = 'dodgerblue4',
                          facet_border = 'black',
-                         facet_color = 'white') {
+                         facet_color = 'white',
+                         rotate_text = NULL) {
+  theme_publication((base_size = 12,
+                     base_family = "HelveticaNeueLT Std",
+                     axis = TRUE,
+                     grid = FALSE,
+                     legend.position = NULL,
+                     rotate_text = NULL))
 
   if(border) {
     border_element <- element_rect(color = 'black', fill = NA)
@@ -102,28 +109,7 @@ theme_border <- function(base_size = 12,
   }
 
 
-  ggthemes::theme_foundation(base_size = base_size, base_family = base_family) +
-    theme(plot.title = element_text(face = "plain", size = 14, hjust = 0.5),
-          plot.subtitle = element_text(face = 'plain', size = 12, hjust = 0.5),
-          text = element_text(family = base_family),
-          panel.background = element_rect(color = 'white'),
-          plot.background = element_rect(color = 'white'),
-          panel.border = border_element,
-          axis.title = element_text(face = "plain", size = rel(1)),
-          axis.title.y = element_text(angle = 90, vjust = 0.5),
-          axis.title.x = element_text(vjust = 0),
-          axis.text = element_text(color = 'black'),
-          axis.line = axis_element,
-          panel.grid.major = grid_element,
-          panel.grid.minor = element_blank(),
-          legend.key = element_rect(color = NA),
-          legend.key.size = unit(0.4, "cm"),
-          legend.background = element_rect(fill = NA),
-          legend.spacing = unit(0, "cm"),
-          legend.title = element_blank(), #element_text(face="italic"),
-          legend.position = legend.position,
-          strip.background = element_rect(color = facet_border, fill = facet_background),
-          strip.text = element_text(face = "plain", color = facet_color))
+
 }
 
 
