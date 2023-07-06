@@ -83,12 +83,12 @@ theme_border <- function(base_size = 12,
                          facet_border = 'black',
                          facet_color = 'white',
                          rotate_text = NULL) {
-  theme_publication(base_size,
-                     base_family,
-                     axis,
-                     grid,
-                     legend.position,
-                     rotate_text)
+  theme_publication(base_size = base_size,
+                     base_family = base_family,
+                     axis = axis,
+                     grid = grid,
+                     legend.position = legend.position,
+                     rotate_text = rotate_text)
 
   if(border) {
     border_element <- element_rect(color = 'black', fill = NA)
@@ -107,8 +107,6 @@ theme_border <- function(base_size = 12,
   } else {
     grid_element <- element_blank()
   }
-
-
 
 }
 
