@@ -38,7 +38,7 @@ thepubr_pal1 <-  function(palette = c('RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'R
                '#E0F3F8', '#ABD9E9', '#74ADD1', '#4575B4', '#313695')
   )
 
-  return(colorRamppalette(colors)(n))
+  return(RColorBrewer::colorRamppalette(colors)(n))
 
 }
 
@@ -89,6 +89,6 @@ thepubr_pal2 <-  function(palette = c('Oranges', 'Purples', 'Reds', 'Blues', 'Gr
              '#238443', '#006837', '#004529')
   )
 
-  return(colorRamppalette(colors)(n))
+  return(RColorBrewer::colorRamppalette(colors)(n))
 
 }
