@@ -13,7 +13,8 @@ theme_border(
   legend.position = "none",
   facet_background = "dodgerblue4",
   facet_border = "black",
-  facet_color = "white"
+  facet_color = "white",
+  rotate_text = NULL
 )
 }
 \arguments{

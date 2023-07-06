@@ -8,7 +8,7 @@
 #'
 #' @export
 #'
-
+#' theme_publication
 theme_publication <- function(base_size = 12,
                               base_family = "HelveticaNeueLT Std",
                               axis = TRUE,
@@ -72,7 +72,7 @@ theme_publication <- function(base_size = 12,
 #'
 #' @export
 #'
-# Border
+# theme_border
 theme_border <- function(base_size = 12,
                          base_family = "HelveticaNeueLT Std",
                          border = TRUE,
@@ -83,12 +83,12 @@ theme_border <- function(base_size = 12,
                          facet_border = 'black',
                          facet_color = 'white',
                          rotate_text = NULL) {
-  theme_publication((base_size = 12,
-                     base_family = "HelveticaNeueLT Std",
-                     axis = TRUE,
-                     grid = FALSE,
-                     legend.position = NULL,
-                     rotate_text = NULL))
+  theme_publication(base_size,
+                     base_family,
+                     axis,
+                     grid,
+                     legend.position,
+                     rotate_text)
 
   if(border) {
     border_element <- element_rect(color = 'black', fill = NA)
