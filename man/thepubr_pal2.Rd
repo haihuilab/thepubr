@@ -5,12 +5,15 @@
 \title{Get palette colors}
 \usage{
 thepubr_pal2(
+  limits = c(0, 1),
   palette = c("Oranges", "Purples", "Reds", "Blues", "Greens", "Greys", "OrRd", "YlOrRd",
     "YlOrBr", "YlGn"),
   n = 200
 )
 }
 \arguments{
+\item{limits}{rescale values, default is c(0, 1)}
+
 \item{palette}{palette color palettes}
 
 \item{n}{the number of colors (>= 1) to be in the palette.}

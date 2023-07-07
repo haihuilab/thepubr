@@ -8,7 +8,7 @@
 #'
 #' @param palette palette color palettes
 #' @param n the number of colors (>= 1) to be in the palette.
-#'
+#' @param limits rescale values, default is c(0, 1)
 #' @return A character vector containing color names
 #'
 #' @seealso Function \code{\link{colorRamppalette}}, package \code{RColorBrewer}
@@ -54,7 +54,7 @@ thepubr_pal1 <-  function(limits = c(0, 1), palette = c('RdBu', 'BrBG', 'PiYG', 
 #'
 #' @param palette palette color palettes
 #' @param n the number of colors (>= 1) to be in the palette.
-#'
+#' @param limits rescale values, default is c(0, 1)
 #' @return A character vector containing color names
 #'
 #' @seealso Function \code{\link{colorRamppalette}}, package \code{RColorBrewer}
