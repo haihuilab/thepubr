@@ -3,7 +3,7 @@
 #' @param base_size default font size is 12
 #' @param base_family default font is "HelveticaNeueLT Std" that requires to be install in the system
 #' @param axis TRUE
-#' @param grid plot has grid
+#' @param grid default without grid, is FALSE, or "major", "minor"
 #' @param legend.position default is "none", could be "top", "right", "bottom", or "left"
 #'
 #' @export
@@ -21,11 +21,15 @@ theme_publication <- function(base_size = 12,
   } else {
     axis_element <- element_blank()
   }
-
-  if(grid) {
-    grid_element <- element_line(color = 'grey90')
-  } else {
-    grid_element <- element_blank()
+  # grid
+  if (!is.null(grid)) {
+    grid.major <- grid.minor <- element_blank()
+  }
+  if(grid == "major") {
+    grid.major <- element_line(color = 'grey30', size = 0.1, linetype = 1)
+  }
+  if(grid == "minor") {
+    grid.minor <- element_line(color = 'grey30', size = 0.1, linetype = 1)
   }
 
   if(!is.null(rotate_text)) {
@@ -45,8 +49,8 @@ theme_publication <- function(base_size = 12,
           axis.title.x = element_text(vjust = 0),
           axis.text = element_text(color = 'black'),
           axis.line = axis_element,
-          panel.grid.major = grid_element,
-          panel.grid.minor = element_blank(),
+          panel.grid.major = grid.major,
+          panel.grid.minor = grid.minor,
           legend.key = element_rect(color = NA),
           legend.key.size = unit(0.4, "cm"),
           legend.background = element_rect(fill = NA),
@@ -64,7 +68,7 @@ theme_publication <- function(base_size = 12,
 #' @param base_family default font is : "HelveticaNeueLT Std"
 #' @param border TRUE: plot has border
 #' @param axis TRUE
-#' @param grid FALSE
+#' @param grid  default is FALSE, or "major", "minor"
 #' @param legend.position default is none
 #' @param facet_background defalut is 'dodgerblue4'
 #' @param facet_border defalut is 'black'
@@ -102,17 +106,11 @@ theme_border <- function(base_size = 12,
     axis_element <- element_blank()
   }
 
-  if(grid) {
-    grid_element <- element_line(color = 'grey90')
-  } else {
-    grid_element <- element_blank()
-  }
 
   theme_pub +
     theme(panel.background = border_element,
           plot.background = border_element,
-          axis.line = axis_element,
-          panel.grid = grid_element)
+          axis.line = axis_element)
 }
 
 
@@ -234,12 +232,5 @@ save_figure <- function(plot = last_plot(),
 # bar <- ggplot(mtcars, aes(factor(carb),fill = factor(carb))) + geom_bar(alpha = 0.7) + labs(title = "Bar Plot")
 # # grid.arrange(bar,(bar + scale_color_publication() + theme_publication()),nrow = 1)
 # g3 <- grid.arrange((bar + scale_color_publication() + theme_publication(base_size = 48)),nrow = 1)
-# # large
-# save_figure(g3, filename = "example_plot_large", size = "large")
-
-
-
-
-
-
-
+## large
+## save_figure(g3, filename = "example_plot_large", size = "large")

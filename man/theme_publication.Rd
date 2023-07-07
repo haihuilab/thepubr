@@ -20,7 +20,7 @@ theme_publication(
 
 \item{axis}{TRUE}
 
-\item{grid}{plot has grid}
+\item{grid}{default without grid, is FALSE, or "major", "minor"}
 
 \item{legend.position}{default is "none", could be "top", "right", "bottom", or "left"}
 }
