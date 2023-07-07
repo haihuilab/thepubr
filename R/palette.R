@@ -17,7 +17,7 @@
 #'
 #' @export
 #' thepubr_pal1
-thepubr_pal1 <-  function(range = c(0, 1), palette = c('RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
+thepubr_pal1 <-  function(limits = c(0, 1), palette = c('RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
                 n = 200) {
 
   palette = match.arg(palette)
@@ -38,7 +38,10 @@ thepubr_pal1 <-  function(range = c(0, 1), palette = c('RdBu', 'BrBG', 'PiYG', '
                '#E0F3F8', '#ABD9E9', '#74ADD1', '#4575B4', '#313695')
   )
 
-  grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n), limits = c(0,1), oob = scales::squish)
+  grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n),
+                                limits = limits,
+                                labels = function(x) paste0(format(round(x, 1))),
+                                oob = scales::squish)
   return(grad)
 
 }
@@ -60,7 +63,7 @@ thepubr_pal1 <-  function(range = c(0, 1), palette = c('RdBu', 'BrBG', 'PiYG', '
 #'
 #' @export
 #' thepubr_pal2
-thepubr_pal2 <-  function(palette = c('Oranges', 'Purples', 'Reds', 'Blues', 'Greens',
+thepubr_pal2 <-  function(limits = c(0, 1), palette = c('Oranges', 'Purples', 'Reds', 'Blues', 'Greens',
                                'Greys', 'OrRd', 'YlOrRd', 'YlOrBr', 'YlGn'),
                 n = 200) {
 
@@ -90,7 +93,10 @@ thepubr_pal2 <-  function(palette = c('Oranges', 'Purples', 'Reds', 'Blues', 'Gr
              '#238443', '#006837', '#004529')
   )
 
-  grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n), limits = c(0,1), oob = scales::squish)
+  grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n),
+                                limits = limits,
+                                labels = function(x) paste0(format(round(x, 1))),
+                                oob = scales::squish)
   return(grad)
 
 }
