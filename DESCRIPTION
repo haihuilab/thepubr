@@ -15,6 +15,7 @@ Imports:
     ggplot2,
     ggthemes,
     gridExtra,
+    RColorBrewer,
     testthat
 Depends: 
     tidyverse
