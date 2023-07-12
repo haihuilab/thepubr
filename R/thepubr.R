@@ -144,7 +144,7 @@ scale_color_publication <- function(alpha = 1, ...) {
 #'
 #' @param filename subfolder/filename
 #' @param directory default is parent directory
-#' @param size could be "small", "medium", "large"; "small_wide", "small_long"...
+#' @param size could be "small", "medium", "large", "super; "small_wide", "small_long"...
 #'
 #' @export
 #'
@@ -196,8 +196,8 @@ save_figure <- function(plot = last_plot(),
     h = 16
   }
   if (size == 'super') {
-    w = 20
-    h = 20
+    w = 18
+    h = 18
   }
 
   # prevent overwrites----------------------------------------------------------
