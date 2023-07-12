@@ -213,16 +213,14 @@ save_figure <- function(plot = last_plot(),
     cat('Saving as', paste0(filename, '.', device), '\n')
 
     filename = paste0(filename, '.', device)
-    if(gg) { # for ggplot objects
-      if(device == 'pdf') {
+    if (gg) { # for ggplot objects
+      if (device == 'pdf') {
         device <- cairo_pdf
+        ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units)
+      } else {
+        ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units, res = 600)
       }
-      ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units)}
-    else { # for others
-      ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units, res = 600)
-      }
-
-}
+    }
 
 
 #---------------------------------
