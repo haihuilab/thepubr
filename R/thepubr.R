@@ -196,8 +196,8 @@ save_figure <- function(plot = last_plot(),
     h = 16
   }
   if (size == 'super') {
-    w = 18
-    h = 18
+    w = 20
+    h = 20
   }
 
   # prevent overwrites----------------------------------------------------------
