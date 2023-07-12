@@ -159,33 +159,45 @@ save_figure <- function(plot = last_plot(),
                         overwrite = TRUE) {
 
   # Some default sizes
-  if(size == 'small') {
+  if (size == 'small') {
     w = 2.5
     h = 2.5
-  } else if(size == 'medium') {
+  }
+  if (size == 'medium') {
     w = 5
     h = 5
-  } else if(size == 'large') {
+  }
+  if (size == 'large') {
     w = 10
     h = 10
-  } else if(size == 'small_wide') {
+  }
+  if (size == 'small_wide') {
     w = 4
     h = 2.5
-  } else if(size == 'medium_wide') {
+  }
+  if (size == 'medium_wide') {
     w = 8
     h = 5
-  } else if(size == 'large_wide') {
+  }
+  if (size == 'large_wide') {
     w = 16
     h = 10
-  } else if(size == 'small_long') {
+  }
+  if (size == 'small_long') {
     w = 2.5
     h = 4
-  } else if(size == 'medium_long') {
+  }
+  if (size == 'medium_long') {
     w = 5
     h = 8
-  } else if(size == 'large_long') {
+  }
+  if (size == 'large_long') {
     w = 10
     h = 16
+  }
+  if (size == 'super') {
+    w = 20
+    h = 20
   }
 
   # prevent overwrites----------------------------------------------------------
