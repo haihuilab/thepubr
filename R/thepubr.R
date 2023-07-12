@@ -221,7 +221,7 @@ save_figure <- function(plot = last_plot(),
         ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units, res = 600)
       }
     }
-
+}
 
 #---------------------------------
 # Examples
