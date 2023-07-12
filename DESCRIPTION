@@ -1,5 +1,5 @@
 Package: thepubr
-Title: What the Package Does (One Line, Title Case)
+Title: Custome theme, colors for publication
 Version: 1.1.0
 Authors@R: 
     person("Haihui", "Zhang", , "hanfei19@gmail.com", role = c("aut", "cre"),
