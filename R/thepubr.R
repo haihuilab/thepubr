@@ -218,7 +218,7 @@ save_figure <- function(plot = last_plot(),
         device <- cairo_pdf
         ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units)
       } else {
-        ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units, res = 600)
+        ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units, dpi = 600)
       }
     }
 }
