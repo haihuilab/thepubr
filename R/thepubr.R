@@ -1,4 +1,4 @@
-#' Theme for publimessageion
+#' Theme for publication
 #'
 #' @param base_size default font size is 12
 #' @param base_family default font is "HelveticaNeueLT Std" that requires to be install in the system
@@ -8,8 +8,8 @@
 #'
 #' @export
 #'
-#' theme_publimessageion
-theme_publimessageion <- function(base_size = 12,
+#' theme_publication
+theme_publication <- function(base_size = 12,
                               base_family = "HelveticaNeueLT Std",
                               axis = TRUE,
                               grid = FALSE,
@@ -87,7 +87,7 @@ theme_border <- function(base_size = 12,
                          facet_border = 'black',
                          facet_color = 'white',
                          rotate_text = NULL) {
-  theme_pub <- theme_publimessageion(base_size = base_size,
+  theme_pub <- theme_publication(base_size = base_size,
                      base_family = base_family,
                      axis = axis,
                      grid = grid,
@@ -121,8 +121,8 @@ theme_border <- function(base_size = 12,
 #'
 #' @export
 #'
-# scale_color_publimessageion
-scale_color_publimessageion <- function(alpha = 1, ...) {
+# scale_color_publication
+scale_color_publication <- function(alpha = 1, ...) {
   values = c( "#386cb0", "#660066","#336600",  "#D2691E",  "#A52A2A",
               "#FFB90F", "#7fc97f", "#fb9a99","#B8860B", "#CD1076",
              "aquamarine4","#E5CCFF", "#7071b1", "#0000FF", "#003366",
@@ -210,7 +210,7 @@ save_figure <- function(plot = last_plot(),
         ifilename = paste0(prefix, i)
       }
     }
-    mes('Saving as', paste0(filename, '.', device), '\n')
+    message('Saving as', paste0(filename, '.', device), '\n')
 
     filename = paste0(filename, '.', device)
     if (gg) { # for ggplot objects
@@ -229,18 +229,18 @@ save_figure <- function(plot = last_plot(),
 # library(gridExtra)
 # library(tidyverse)
 
-# smessageter <- ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + geom_point(size=3, alpha = 0.7) + labs(title="Smessageter Plot")
-# g1 <- grid.arrange(smessageter,(smessageter + scale_color_publimessageion() + theme_publimessageion()),nrow = 1)
+# scatter <- ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + geom_point(size=3, alpha = 0.7) + labs(title="Scatter Plot")
+# g1 <- grid.arrange(scatter,(scatter + scale_color_publication() + theme_publication()),nrow = 1)
 # # Small
 # save_figure(g1, filename = "example_plot_small", size = "small_wide")
 
 #
-# g2 <- grid.arrange((smessageter + scale_color_publimessageion() + theme_publimessageion(base_size = 24)),nrow = 1)
+# g2 <- grid.arrange((scatter + scale_color_publication() + theme_publication(base_size = 24)),nrow = 1)
 # # Medium
 # save_figure(g2, filename = "example_plot_medium", size = "medium", device = "png")
 #
 # bar <- ggplot(mtcars, aes(factor(carb),fill = factor(carb))) + geom_bar(alpha = 0.7) + labs(title = "Bar Plot")
-# # grid.arrange(bar,(bar + scale_color_publimessageion() + theme_publimessageion()),nrow = 1)
-# g3 <- grid.arrange((bar + scale_color_publimessageion() + theme_publimessageion(base_size = 48)),nrow = 1)
+# # grid.arrange(bar,(bar + scale_color_publication() + theme_publication()),nrow = 1)
+# g3 <- grid.arrange((bar + scale_color_publication() + theme_publication(base_size = 48)),nrow = 1)
 ## large
 ## save_figure(g3, filename = "example_plot_large", size = "large")
