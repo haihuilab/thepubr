@@ -210,7 +210,7 @@ save_figure <- function(plot = last_plot(),
         ifilename = paste0(prefix, i)
       }
     }
-    message('Saving as', paste0(filename, '.', device), '\n')
+    message("Saving to: ", paste0(filename, '.', device), '\n')
 
     filename = paste0(filename, '.', device)
     if (gg) { # for ggplot objects
