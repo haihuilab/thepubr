@@ -33,7 +33,7 @@ theme_publication <- function(base_size = 12,
   }
 
   if(!is.null(rotate_text)) {
-    x_axis_text <- element_text(angle = rotate_text,  vjust = 1, hjust=1)
+    x_axis_text <- element_text(angle = rotate_text,  vjust = 0.5, hjust=1)
   } else {
     x_axis_text <- element_text()
   }
