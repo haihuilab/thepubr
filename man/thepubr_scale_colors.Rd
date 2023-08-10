@@ -11,7 +11,7 @@ thepubr_scale_colors(alpha = 1, aes = "colour", ...)
 
 \item{aes}{default is "colour" with scale_colour_manual,
 use aesthetic mapping with "colour" like geom_line() and geom_point().
-if aes = "fill",
+If aes = "fill" with scale_fill_manual,
 use aesthetic mapping with "fill" like geom_bar(), geom_area(), and geom_polygon().}
 
 \item{values}{a list of color values}

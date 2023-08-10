@@ -28,7 +28,7 @@ thepubr_colors <- function(alpha = 1,n = 1, ...) {
 #' @param alpha alpha value (0, 1)
 #' @param aes default is "colour" with scale_colour_manual,
 #' use aesthetic mapping with "colour" like geom_line() and geom_point().
-#' if aes = "fill",
+#' If aes = "fill" with scale_fill_manual,
 #' use aesthetic mapping with "fill" like geom_bar(), geom_area(), and geom_polygon().
 #'
 #' @export
