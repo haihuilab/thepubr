@@ -132,7 +132,6 @@ save_figure <- function(plot = last_plot(),
                         size = 'small',
                         gg = TRUE,
                         overwrite = TRUE) {
-
   # Some default sizes
   if (size == 'small') {
     w = 2.5
@@ -184,18 +183,19 @@ save_figure <- function(plot = last_plot(),
         i = i + 1
         ifilename = paste0(prefix, i)
       }
-    }
-    message("Saving to: ", paste0(filename, '.', device), '\n')
+  }
 
-    filename = paste0(filename, '.', device)
+  message("Saving to: ", paste0(filename, '.', device), '\n')
 
-    save_dir <- gsub("/[^/]*$", "",
+  filename = paste0(filename, '.', device)
+
+  save_dir <- gsub("/[^/]*$", "",
       paste0(directory, "/", filename))
-    if (!exists(save_dir)) {
-      message("The fold doesn't exists: ", save_dir)
+  if (!exists(save_dir)) {
+      message("The fold doesn't exists: ", save_dir, "\n")
     }
 
-    if (gg) { # for ggplot objects
+  if (gg) { # for ggplot objects
       if (device == 'pdf') {
         device <- cairo_pdf
         ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units)
