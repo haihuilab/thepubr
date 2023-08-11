@@ -192,7 +192,7 @@ save_figure <- function(plot = last_plot(),
   save_dir <- gsub("/[^/]*$", "",
       paste0(directory, "/", filename))
   if (!exists(save_dir)) {
-      message("The fold doesn't exists: ", save_dir, "\n")
+      cat("Folder doesn't exist: ", save_dir, "\n")
     }
 
   if (gg) { # for ggplot objects
