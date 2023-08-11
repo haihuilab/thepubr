@@ -45,21 +45,14 @@ thepubr_scale_colors <- function(alpha = 1, aes = "colour", ...) {
               "#66B2FF", "#8B7D6B", "#FF3319",  "#660000", "#CCCC00")
 
   # aesthetic mapping with `fill` like geom_bar(), geom_area(), and geom_polygon().
-  if (alpha == 1) {
-    scale_colour_manual(values = values, ...)
-  } else {
+  if (aes == "colour" | aes == "color") {
     scale_colour_manual(values = alpha(values, alpha), ...)
   }
 
   # aesthetic mapping with `color` like geom_line() and geom_point().
   if (aes == "fill") {
-
-    if (alpha == 1) {
-      scale_fill_manual(values = values, ...)
-    } else {
-      scale_fill_manual(values = alpha(values, alpha), ...)
+    scale_fill_manual(values = alpha(values, alpha), ...)
     }
-  }
 
 }
 
