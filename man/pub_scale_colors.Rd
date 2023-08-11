@@ -4,15 +4,10 @@
 \alias{pub_scale_colors}
 \title{Custom scale_fill_manual, scale_colour_manual}
 \usage{
-pub_scale_colors(alpha = 1, aes = "colour", ...)
+pub_scale_colors(alpha = 1, ...)
 }
 \arguments{
 \item{alpha}{alpha value (0, 1)}
-
-\item{aes}{default is "colour" with scale_colour_manual,
-use aesthetic mapping with "colour" like geom_line() and geom_point().
-If aes = "fill" with scale_fill_manual,
-use aesthetic mapping with "fill" like geom_bar(), geom_area(), and geom_polygon().}
 
 \item{values}{a list of color values}
 }
