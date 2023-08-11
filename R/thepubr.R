@@ -188,6 +188,13 @@ save_figure <- function(plot = last_plot(),
     message("Saving to: ", paste0(filename, '.', device), '\n')
 
     filename = paste0(filename, '.', device)
+
+    save_dir <- gsub("/[^/]*$", "",
+      paste0(directory, "/", filename))
+    if (!exists(save_dir)) {
+      message("The fold doesn't exists: ", save_dir)
+    }
+
     if (gg) { # for ggplot objects
       if (device == 'pdf') {
         device <- cairo_pdf
