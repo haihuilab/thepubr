@@ -27,14 +27,14 @@ theme_publication <- function(base_size = 12,
     grid.major <- grid.minor <- element_blank()
   }
   if(grid == "major") {
-    grid.major <- element_line(color = 'grey30', size = 0.1, linetype = 1)
+    grid.major <- element_line(color = 'grey85', size = 0.1, linetype = 1)
   }
   if(grid == "minor") {
-    grid.minor <- element_line(color = 'grey30', size = 0.1, linetype = 1)
+    grid.minor <- element_line(color = 'grey85', size = 0.1, linetype = 1)
   }
   if(grid == "all") {
-    grid.major <- element_line(color = 'grey30', size = 0.1, linetype = 1)
-    grid.minor <- element_line(color = 'grey30', size = 0.1, linetype = 1)
+    grid.major <- element_line(color = 'grey85', size = 0.1, linetype = 1)
+    grid.minor <- element_line(color = 'grey85', size = 0.1, linetype = 1)
   }
 
   if(!is.null(rotate_text)) {
@@ -125,19 +125,26 @@ theme_border <- function(base_size = 12,
 #' @param filename subfolder/filename
 #' @param directory default is parent directory
 #' @param size could be "small", "medium", "large", "super; "small_wide", "small_long"...
-#'
+#' @param width custom width
+#' @param height custom height
 #' @export
 #'
 # Save custom figure size
 save_figure <- function(plot = last_plot(),
                         filename,
                         device = "pdf",
-                        units = 'in',
+                        units = "in",
                         directory = dirname(getwd()),
-                        size = 'small',
+                        size = "custom",
+                        width = 2.5,
+                        height = 2.5,
                         gg = TRUE,
                         overwrite = TRUE) {
   # Some default sizes
+  if (size == 'custom') {
+    w = width
+    h = height
+  }
   if (size == 'small') {
     w = 2.5
     h = 2.5

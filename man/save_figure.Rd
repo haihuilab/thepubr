@@ -10,7 +10,9 @@ save_figure(
   device = "pdf",
   units = "in",
   directory = dirname(getwd()),
-  size = "small",
+  size = "custom",
+  width = 2.5,
+  height = 2.5,
   gg = TRUE,
   overwrite = TRUE
 )
@@ -21,6 +23,10 @@ save_figure(
 \item{directory}{default is parent directory}
 
 \item{size}{could be "small", "medium", "large", "super; "small_wide", "small_long"...}
+
+\item{width}{custom width}
+
+\item{height}{custom height}
 }
 \description{
 Custom save figure
