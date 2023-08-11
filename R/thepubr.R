@@ -21,6 +21,7 @@ theme_publication <- function(base_size = 12,
   } else {
     axis_element <- element_blank()
   }
+
   # grid
   if (!is.null(grid)) {
     grid.major <- grid.minor <- element_blank()
@@ -29,6 +30,10 @@ theme_publication <- function(base_size = 12,
     grid.major <- element_line(color = 'grey30', size = 0.1, linetype = 1)
   }
   if(grid == "minor") {
+    grid.minor <- element_line(color = 'grey30', size = 0.1, linetype = 1)
+  }
+  if(grid == "all") {
+    grid.major <- element_line(color = 'grey30', size = 0.1, linetype = 1)
     grid.minor <- element_line(color = 'grey30', size = 0.1, linetype = 1)
   }
 
