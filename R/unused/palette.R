@@ -8,18 +8,20 @@
 #'
 #' @param palette palette color palettes
 #' @param n the number of colors (>= 1) to be in the palette.
-#'
+#' @param limits rescale values, default is c(0, 1)
 #' @return A character vector containing color names
 #'
 #' @seealso Function \code{\link{colorRamppalette}}, package \code{RColorBrewer}
 #'
 #' @keywords color
-#' @example vignettes/example-colorlegend.R
+#'
 #' @export
 #'
-#' thepubr_pal1
-thepubr_pal1 <-  function(palette = c('RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
-                n = 200) {
+pub_pal1 <-  function(
+    limits = c(0, 1),
+    aesthetics = c("color", "colour", "fill"),
+    palette = c('RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
+    n = 200) {
 
   palette = match.arg(palette)
 
@@ -39,7 +41,24 @@ thepubr_pal1 <-  function(palette = c('RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'R
                '#E0F3F8', '#ABD9E9', '#74ADD1', '#4575B4', '#313695')
   )
 
-  return(colorRamppalette(colors)(n))
+  aesthetics = match.arg(aesthetics)
+  aesthetics = switch(aesthetics, color = "color", colour = "color", fill = "fill")
+
+  if (aesthetics == "color") {
+    grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n),
+                                  limits = limits,
+                                  labels = function(x) paste0(format(round(x, 1))),
+                                  oob = scales::squish)
+  }
+
+  if (aesthetics == "fill") {
+    grad <- scale_fill_gradientn(colours = colorRampPalette(colors)(n),
+                                  limits = limits,
+                                  labels = function(x) paste0(format(round(x, 1))),
+                                  oob = scales::squish)
+  }
+
+  return(grad)
 
 }
 
@@ -51,19 +70,20 @@ thepubr_pal1 <-  function(palette = c('RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'R
 #'
 #' @param palette palette color palettes
 #' @param n the number of colors (>= 1) to be in the palette.
-#'
+#' @param limits rescale values, default is c(0, 1)
 #' @return A character vector containing color names
 #'
 #' @seealso Function \code{\link{colorRamppalette}}, package \code{RColorBrewer}
 #'
 #' @keywords color
-#' @example vignettes/example-colorlegend.R
+#'
 #' @export
 #'
-#' #' thepubr_pal2
-thepubr_pal2 <-  function(palette = c('Oranges', 'Purples', 'Reds', 'Blues', 'Greens',
-                               'Greys', 'OrRd', 'YlOrRd', 'YlOrBr', 'YlGn'),
-                n = 200) {
+pub_pal2 <-  function(
+    limits = c(0, 1),
+    aesthetics = c("color", "colour", "fill"),
+    palette = c('RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
+    n = 200) {
 
   palette = match.arg(palette)
 
@@ -91,6 +111,10 @@ thepubr_pal2 <-  function(palette = c('Oranges', 'Purples', 'Reds', 'Blues', 'Gr
              '#238443', '#006837', '#004529')
   )
 
-  return(colorRamppalette(colors)(n))
+  grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n),
+                                limits = limits,
+                                labels = function(x) paste0(format(round(x, 1))),
+                                oob = scales::squish)
+  return(grad)
 
 }

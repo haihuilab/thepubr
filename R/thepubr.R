@@ -3,7 +3,7 @@
 #' @param base_size default font size is 12
 #' @param base_family default font is "HelveticaNeueLT Std" that requires to be install in the system
 #' @param axis TRUE
-#' @param grid default without grid, is FALSE, or "major", "minor"
+#' @param grid default without grid, is FALSE, or "major", "minor", "all"
 #' @param legend.position default is "none", could be "top", "right", "bottom", or "left"
 #'
 #' @export
@@ -73,7 +73,7 @@ theme_publication <- function(base_size = 12,
 #' @param base_family default font is : "HelveticaNeueLT Std"
 #' @param border TRUE: plot has border
 #' @param axis TRUE
-#' @param grid  default is FALSE, or "major", "minor"
+#' @param grid  default is FALSE, or "major", "minor", "all"
 #' @param legend.position default is none
 #' @param facet_background defalut is 'dodgerblue4'
 #' @param facet_border defalut is 'black'

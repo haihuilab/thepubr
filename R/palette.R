@@ -10,15 +10,19 @@
 #' @param n the number of colors (>= 1) to be in the palette.
 #' @param limits rescale values, default is c(0, 1)
 #' @return A character vector containing color names
+#' @param aesthetics c("color", "fill")
 #'
 #' @seealso Function \code{\link{colorRamppalette}}, package \code{RColorBrewer}
 #'
 #' @keywords color
 #'
 #' @export
-#' thepubr_pal1
-thepubr_pal1 <-  function(limits = c(0, 1), palette = c('RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
-                n = 200) {
+#'
+pub_pal1 <-  function(
+    limits = c(0, 1),
+    aesthetics = c("color", "colour", "fill"),
+    palette = c('RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
+    n = 200) {
 
   palette = match.arg(palette)
 
@@ -38,10 +42,23 @@ thepubr_pal1 <-  function(limits = c(0, 1), palette = c('RdBu', 'BrBG', 'PiYG', 
                '#E0F3F8', '#ABD9E9', '#74ADD1', '#4575B4', '#313695')
   )
 
-  grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n),
-                                limits = limits,
-                                labels = function(x) paste0(format(round(x, 1))),
-                                oob = scales::squish)
+  aesthetics = match.arg(aesthetics)
+  aesthetics = switch(aesthetics, color = "color", colour = "color", fill = "fill")
+
+  if (aesthetics == "color") {
+    grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n),
+                                  limits = limits,
+                                  labels = function(x) paste0(format(round(x, 1))),
+                                  oob = scales::squish)
+  }
+
+  if (aesthetics == "fill") {
+    grad <- scale_fill_gradientn(colours = colorRampPalette(colors)(n),
+                                  limits = limits,
+                                  labels = function(x) paste0(format(round(x, 1))),
+                                  oob = scales::squish)
+  }
+
   return(grad)
 
 }
@@ -56,16 +73,20 @@ thepubr_pal1 <-  function(limits = c(0, 1), palette = c('RdBu', 'BrBG', 'PiYG', 
 #' @param n the number of colors (>= 1) to be in the palette.
 #' @param limits rescale values, default is c(0, 1)
 #' @return A character vector containing color names
+#' @param aesthetics c("color", "fill")
 #'
 #' @seealso Function \code{\link{colorRamppalette}}, package \code{RColorBrewer}
 #'
 #' @keywords color
 #'
 #' @export
-#' thepubr_pal2
-thepubr_pal2 <-  function(limits = c(0, 1), palette = c('Oranges', 'Purples', 'Reds', 'Blues', 'Greens',
-                               'Greys', 'OrRd', 'YlOrRd', 'YlOrBr', 'YlGn'),
-                n = 200) {
+#'
+pub_pal2 <-  function(
+    limits = c(0, 1),
+    aesthetics = c("color", "colour", "fill"),
+    palette = c('Oranges', 'Purples', 'Reds', 'Blues', 'Greens', 'Greys',
+                'OrRd', 'YlOrRd', 'YlOrBr', 'YlGn'),
+    n = 200) {
 
   palette = match.arg(palette)
 
@@ -93,10 +114,23 @@ thepubr_pal2 <-  function(limits = c(0, 1), palette = c('Oranges', 'Purples', 'R
              '#238443', '#006837', '#004529')
   )
 
-  grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n),
-                                limits = limits,
-                                labels = function(x) paste0(format(round(x, 1))),
-                                oob = scales::squish)
+  aesthetics = match.arg(aesthetics)
+  aesthetics = switch(aesthetics, color = "color", colour = "color", fill = "fill")
+
+  if (aesthetics == "color") {
+    grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n),
+                                  limits = limits,
+                                  labels = function(x) paste0(format(round(x, 1))),
+                                  oob = scales::squish)
+  }
+
+  if (aesthetics == "fill") {
+    grad <- scale_fill_gradientn(colours = colorRampPalette(colors)(n),
+                                 limits = limits,
+                                 labels = function(x) paste0(format(round(x, 1))),
+                                 oob = scales::squish)
+  }
+
   return(grad)
 
 }

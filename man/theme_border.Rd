@@ -26,7 +26,7 @@ theme_border(
 
 \item{axis}{TRUE}
 
-\item{grid}{default is FALSE, or "major", "minor"}
+\item{grid}{default is FALSE, or "major", "minor", "all"}
 
 \item{legend.position}{default is none}
 
