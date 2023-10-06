@@ -9,7 +9,6 @@ save_figure(
   filename,
   device = "pdf",
   units = "in",
-  directory = dirname(getwd()),
   size = "custom",
   width = 2.5,
   height = 2.5,
@@ -19,8 +18,6 @@ save_figure(
 }
 \arguments{
 \item{filename}{subfolder/filename}
-
-\item{directory}{default is parent directory}
 
 \item{size}{could be "small", "medium", "large", "super; "small_wide", "small_long"...}
 

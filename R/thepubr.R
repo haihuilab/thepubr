@@ -199,7 +199,7 @@ save_figure <- function(plot = last_plot(),
 
   filename = paste0(filename, '.', device)
 
-  save_dir <- gsub("/[^/]*$", "", filename))
+  save_dir <- gsub("/[^/]*$", "", filename)
   if (!file.exists(save_dir)) {
       cat("Folder doesn't exist: ", save_dir, "\n")
     }
