@@ -123,7 +123,6 @@ theme_border <- function(base_size = 12,
 #' Custom save figure
 #'
 #' @param filename subfolder/filename
-#' @param directory default is parent directory
 #' @param size could be "small", "medium", "large", "super; "small_wide", "small_long"...
 #' @param width custom width
 #' @param height custom height
@@ -134,7 +133,6 @@ save_figure <- function(plot = last_plot(),
                         filename,
                         device = "pdf",
                         units = "in",
-                        directory = dirname(getwd()),
                         size = "custom",
                         width = 2.5,
                         height = 2.5,
@@ -190,7 +188,7 @@ save_figure <- function(plot = last_plot(),
   i = 0
   prefix <- filename
   if(!overwrite) {
-      while(file.exists(paste0(directory, filename,'.', device)))
+      while(file.exists(paste0(filename,'.', device)))
       {
         i = i + 1
         ifilename = paste0(prefix, i)
@@ -201,8 +199,7 @@ save_figure <- function(plot = last_plot(),
 
   filename = paste0(filename, '.', device)
 
-  save_dir <- gsub("/[^/]*$", "",
-      paste0(directory, "/", filename))
+  save_dir <- gsub("/[^/]*$", "", filename))
   if (!file.exists(save_dir)) {
       cat("Folder doesn't exist: ", save_dir, "\n")
     }
@@ -210,9 +207,9 @@ save_figure <- function(plot = last_plot(),
   if (gg) { # for ggplot objects
       if (device == 'pdf') {
         device <- cairo_pdf
-        ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units)
+        ggsave(filename = filename, device = device, plot = plot, width = w, height = h, units = units)
       } else {
-        ggsave(filename = paste0(directory, "/", filename), device = device, plot = plot, width = w, height = h, units = units, dpi = 600)
+        ggsave(filename = filename, device = device, plot = plot, width = w, height = h, units = units, dpi = 600)
       }
     }
 }
