@@ -13,7 +13,9 @@ pub_colors <- function(alpha = 1,n = 1, ...) {
               "#663300", "#666600", "#7FFF00", "#330066", "#00FFFF",
               "#838B8B", "#330019", "#ffff33",  "#DEB887", "#5F9EA0",
               "#2F4F4F", "#8B4513", "#8B2323", "#FF7F50", "#a6cee3",
-              "#66B2FF", "#8B7D6B", "#FF3319",  "#660000", "#CCCC00") %>%
+              "#66B2FF", "#8B7D6B", "#FF3319",  "#660000", "#CCCC00",
+              "#be4d25", "#50C9CE", "#72A1E5", "#FCD3DE", "#2E382E",
+              "#ffadad", "#ffd6a5", "#caffbf", "#9bf6ff", "#bdb2ff") %>%
     factor(levels = unique(.))
 
   values <- alpha(values, alpha)[n]
@@ -35,7 +37,9 @@ pub_scale_colors <- function(alpha = 1, ...) {
               "#663300", "#666600", "#7FFF00",  "#614BC3", "#00FFFF",
               "#838B8B", "#5F9EA0", "#ffff33",  "#DEB887", "#BEADFA",
               "#2F4F4F", "#8B4513", "#8B2323", "#FF7F50", "#a6cee3",
-              "#66B2FF", "#8B7D6B", "#FF3319",  "#660000", "#CCCC00")
+              "#66B2FF", "#8B7D6B", "#FF3319",  "#660000", "#CCCC00",
+              "#be4d25", "#50C9CE", "#72A1E5", "#FCD3DE", "#2E382E",
+              "#ffadad", "#ffd6a5", "#caffbf", "#9bf6ff", "#bdb2ff")
 
   scale_discrete_manual(values = alpha(colors, alpha), ...)
 

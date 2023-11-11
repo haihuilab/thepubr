@@ -1,5 +1,24 @@
 #' Theme for publication
 #'
+#' @param x the last plot
+#' @param filename the filename
+#' @param width default is 7
+#' @param height default is 7
+#'
+#' @export
+#'
+#' theme_publication
+save_pdf <- function(x, filename, width = 7, height = 7) {
+  stopifnot(!missing(x))
+  stopifnot(!missing(filename))
+  pdf(filename, width = width, height = height)
+  grid::grid.newpage()
+  grid::grid.draw(x$gtable)
+  dev.off()
+}
+
+
+#-------------------------------------------------------------------------------
 #' @param base_size default font size is 12
 #' @param base_family default font is "HelveticaNeueLT Std" that requires to be install in the system
 #' @param axis TRUE
