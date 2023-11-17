@@ -17,7 +17,7 @@ theme_publication <- function(base_size = 12,
                               rotate_text = NULL) {
 
   if(axis) {
-    axis_element <- element_line(color = 'black', size =  0.3)
+    axis_element <- element_line(color = 'black', size =  0.2)
   } else {
     axis_element <- element_blank()
   }
@@ -106,7 +106,7 @@ theme_border <- function(base_size = 12,
   }
 
   if(axis) {
-    axis_element <- element_line(color = 'black', size =  0.3)
+    axis_element <- element_line(color = 'black', size =  0.2)
   } else {
     axis_element <- element_blank()
   }
