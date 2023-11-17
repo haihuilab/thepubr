@@ -100,7 +100,7 @@ theme_border <- function(base_size = 12,
                      rotate_text = rotate_text)
 
   if(border) {
-    border_element <- element_rect(color = 'black', fill = NA, size = 0.1)
+    border_element <- element_rect(color = 'black', fill = NA, size = 0.2)
   } else {
     border_element <- element_rect(color = NA, fill = NA)
   }
