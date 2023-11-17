@@ -17,7 +17,7 @@ theme_publication <- function(base_size = 12,
                               rotate_text = NULL) {
 
   if(axis) {
-    axis_element <- element_line(color = 'black', size =  0.1)
+    axis_element <- element_line(color = 'black', size =  0.3)
   } else {
     axis_element <- element_blank()
   }
@@ -100,13 +100,13 @@ theme_border <- function(base_size = 12,
                      rotate_text = rotate_text)
 
   if(border) {
-    border_element <- element_rect(color = 'black', fill = NA, size = 0.2)
+    border_element <- element_rect(color = 'black', fill = NA, size = 0.3)
   } else {
     border_element <- element_rect(color = NA, fill = NA)
   }
 
   if(axis) {
-    axis_element <- element_line(color = 'black', size =  0.1)
+    axis_element <- element_line(color = 'black', size =  0.3)
   } else {
     axis_element <- element_blank()
   }
