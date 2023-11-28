@@ -15,7 +15,8 @@ pub_colors <- function(alpha = 1,n = 1, ...) {
               "#2F4F4F", "#8B4513", "#8B2323", "#FF7F50", "#a6cee3",
               "#66B2FF", "#8B7D6B", "#FF3319",  "#660000", "#CCCC00",
               "#be4d25", "#50C9CE", "#72A1E5", "#FCD3DE", "#2E382E",
-              "#ffadad", "#ffd6a5", "#caffbf", "#9bf6ff", "#bdb2ff") %>%
+              "#ffadad", "#ffd6a5", "#caffbf", "#9bf6ff", "#bdb2ff",
+              'darkgoldenrod4', "brown4", "blue4", "chartreuse4", "chocolate4") %>%
     factor(levels = unique(.))
 
   values <- alpha(values, alpha)[n]
@@ -29,7 +30,7 @@ pub_colors <- function(alpha = 1,n = 1, ...) {
 #' @param alpha alpha value (0, 1)
 #'
 #' @export
-#'
+#' http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 pub_scale_colors <- function(alpha = 1, ...) {
   colors = c( "#386cb0", "#660066","#336600",  "#D2691E",  "#A52A2A",
               "#FFB90F", "#7fc97f", "#33BBC5", "#FF6868", "#B8860B",
@@ -39,7 +40,8 @@ pub_scale_colors <- function(alpha = 1, ...) {
               "#2F4F4F", "#8B4513", "#8B2323", "#FF7F50", "#a6cee3",
               "#66B2FF", "#8B7D6B", "#FF3319",  "#660000", "#CCCC00",
               "#be4d25", "#50C9CE", "#72A1E5", "#FCD3DE", "#2E382E",
-              "#ffadad", "#ffd6a5", "#caffbf", "#9bf6ff", "#bdb2ff")
+              "#ffadad", "#ffd6a5", "#caffbf", "#9bf6ff", "#bdb2ff",
+              'darkgoldenrod4', "brown4", "blue4", "chartreuse4", "chocolate4")
 
   scale_discrete_manual(values = alpha(colors, alpha), ...)
 
