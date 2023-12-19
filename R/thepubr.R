@@ -45,7 +45,7 @@ theme_publication <- function(base_size = 12,
 
   ggthemes::theme_foundation(base_size = base_size, base_family = base_family) +
     theme(plot.title = element_text(face = "bold", size = base_size, hjust = 0.5),
-          plot.subtitle = element_text(face = "plain", size = base-size, hjust = 0.5)
+          plot.subtitle = element_text(face = "plain", size = base_size, hjust = 0.5),
           text = element_text(family = base_family),
           panel.background = element_rect(color = NA),
           plot.background = element_rect(color = NA),
