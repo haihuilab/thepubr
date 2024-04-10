@@ -8,6 +8,7 @@ pub_pal1(
   limits = c(0, 1),
   aesthetics = c("color", "colour", "fill"),
   palette = c("Custom", "RdBu", "BrBG", "PiYG", "PRGn", "PuOr", "RdYlBu"),
+  reverse = FALSE,
   n = 200
 )
 }
@@ -17,6 +18,8 @@ pub_pal1(
 \item{aesthetics}{c("color", "fill")}
 
 \item{palette}{palette color palettes}
+
+\item{reverse}{default color is in positive order (FALSE, TRUE)}
 
 \item{n}{the number of colors (>= 1) to be in the palette.}
 }

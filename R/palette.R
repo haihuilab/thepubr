@@ -7,6 +7,7 @@
 #' partly negative (e.g. correlation matrix in [-1, 1], or [-20, 100]).
 #'
 #' @param palette palette color palettes
+#' @param reverse default color is in positive order (FALSE, TRUE)
 #' @param n the number of colors (>= 1) to be in the palette.
 #' @param limits rescale values, default is c(0, 1)
 #' @return A character vector containing color names
@@ -22,6 +23,7 @@ pub_pal1 <-  function(
     limits = c(0, 1),
     aesthetics = c("color", "colour", "fill"),
     palette = c( 'Custom', 'RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
+    reverse = FALSE,
     n = 200) {
 
   palette = match.arg(palette)
@@ -43,6 +45,11 @@ pub_pal1 <-  function(
     RdYlBu = c('#A50026', '#D73027', '#F46D43', '#FDAE61', '#FEE090', '#FFFFFF',
                '#E0F3F8', '#ABD9E9', '#74ADD1', '#4575B4', '#313695')
   )
+
+  # reverse color
+  if (reverse == TRUE) {
+    colors = rev(colors)
+  }
 
   aesthetics = match.arg(aesthetics)
   aesthetics = switch(aesthetics, color = "color", colour = "color", fill = "fill")
@@ -72,6 +79,7 @@ pub_pal1 <-  function(
 #' or non-positive matrix (e.g. matrix in [0, 20], or [-100, -10], or [100, 500]).
 #'
 #' @param palette palette color palettes
+#' @param reverse default color is in positive order (FALSE, TRUE)
 #' @param n the number of colors (>= 1) to be in the palette.
 #' @param limits rescale values, default is c(0, 1)
 #' @return A character vector containing color names
@@ -88,6 +96,7 @@ pub_pal2 <-  function(
     aesthetics = c("color", "colour", "fill"),
     palette = c('Oranges', 'Purples', 'Reds', 'Blues', 'Greens', 'Greys',
                 'OrRd', 'YlOrRd', 'YlOrBr', 'YlGn'),
+    reverse = FALSE,
     n = 200) {
 
   palette = match.arg(palette)
@@ -115,6 +124,11 @@ pub_pal2 <-  function(
     YlGn = c('#FFFFE5', '#F7FCB9', '#D9F0A3', '#ADDD8E', '#78C679', '#41AB5D',
              '#238443', '#006837', '#004529')
   )
+
+  # reverse color
+  if (reverse == TRUE) {
+    colors = rev(colors)
+  }
 
   aesthetics = match.arg(aesthetics)
   aesthetics = switch(aesthetics, color = "color", colour = "color", fill = "fill")

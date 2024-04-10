@@ -30,7 +30,7 @@ pub_colors <- function(alpha = 1,n = 1, ...) {
 #' @param alpha alpha value (0, 1)
 #'
 #' @export
-#' http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+## http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 pub_scale_colors <- function(alpha = 1, ...) {
   colors = c( "#386cb0", "#660066","#336600",  "#D2691E",  "#A52A2A",
               "#FFB90F", "#7fc97f", "#33BBC5", "#FF6868", "#B8860B",
