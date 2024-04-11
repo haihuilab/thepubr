@@ -22,7 +22,7 @@
 pub_pal1 <-  function(
     limits = c(0, 1),
     aesthetics = c("color", "colour", "fill"),
-    palette = c( 'Custom', 'RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
+    palette = c( 'Custom', 'Spectral', 'RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
     reverse = FALSE,
     n = 200) {
 
@@ -32,6 +32,8 @@ pub_pal1 <-  function(
     palette,
     Custom = c("#0F425CFF","#FFFF99","#FFCC66","#FF9933",
                "#CC0C00FF","#800000FF"),
+    Spectral = c("#5E4FA2", "#3288BD", "#66C2A5", "#ABDDA4", "#E6F598", "#FFFFBF",
+                 "#FEE08B", "#FDAE61", "#F46D43", "#D53E4F", "#9E0142"),
     RdBu = c('#67001F', '#B2182B', '#D6604D', '#F4A582', '#FDDBC7', '#FFFFFF',
              '#D1E5F0', '#92C5DE', '#4393C3', '#2166AC', '#053061'),
     BrBG = c('#543005', '#8C510A', '#BF812D', '#DFC27D', '#F6E8C3', '#FFFFFF',
