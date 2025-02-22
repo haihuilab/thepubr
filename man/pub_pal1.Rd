@@ -7,7 +7,7 @@
 pub_pal1(
   limits = c(0, 1),
   aesthetics = c("color", "colour", "fill"),
-  palette = c("Custom", "RdBu", "BrBG", "PiYG", "PRGn", "PuOr", "RdYlBu"),
+  palette = c("Custom", "Spectral", "RdBu", "BrBG", "PiYG", "PRGn", "PuOr", "RdYlBu"),
   reverse = FALSE,
   n = 200
 )
