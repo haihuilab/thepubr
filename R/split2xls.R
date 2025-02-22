@@ -16,7 +16,7 @@ library(purrr)
 split2xls <- function(df,
                       file_col = NULL,
                       sheet_col,
-                      output_dir = file.path(getwd(), "split2xls/"),
+                      output_dir = file.path(getwd(), "split2xls"),
                       gene_col = "gene",
                       gene_annotation = TRUE,
                       overwrite = TRUE) {
@@ -32,7 +32,7 @@ split2xls <- function(df,
   }
 
   # Load gene summary data
-  annotation_file <- system.file("extdata", "gene_functions_uniprot_refseq.csv", package = "thepubr")
+  annotation_file <- system.file("extdata", "gene_functions_from_uniprot_refseq.csv", package = "thepubr")
 
   if (gene_annotation && file.exists(annotation_file)) {
     gene_summary <- read.csv(annotation_file)
