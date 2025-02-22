@@ -22,5 +22,6 @@ Imports:
     RColorBrewer,
     testthat
 Depends: 
-    tidyverse
+    tidyverse,
+    openxlsx
 Config/testthat/edition: 3
