@@ -6,9 +6,9 @@
 \usage{
 split2xls(
   df,
-  file_col,
+  file_col = NULL,
   sheet_col,
-  output_dir = file.path(getwd(), "split2xls/"),
+  output_dir = file.path(getwd(), "split2xls/split2xls.xlsx"),
   gene_col = "gene",
   gene_annotation = TRUE,
   overwrite = TRUE
@@ -17,11 +17,11 @@ split2xls(
 \arguments{
 \item{df}{Dataframe to be split.}
 
-\item{file_col}{Column used to determine separate Excel files.}
+\item{file_col}{(Optional) Column used to determine separate Excel files. If NULL, all sheets go into one file.}
 
 \item{sheet_col}{Column used to determine different sheets within each Excel file.}
 
-\item{output_dir}{Directory where Excel files should be saved (default: "split2xls/").}
+\item{output_dir}{Directory and file names where Excel files should be saved (default: "split2xls/").}
 
 \item{gene_col}{Name of the SYMBOL gene column for annotation (default: "gene").}
 

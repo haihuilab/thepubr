@@ -8,7 +8,7 @@ library(glue)
 #' @param df Dataframe to be split.
 #' @param file_col (Optional) Column used to determine separate Excel files. If NULL, all sheets go into one file.
 #' @param sheet_col Column used to determine different sheets within each Excel file.
-#' @param output_dir Directory where Excel files should be saved (default: "split2xls/").
+#' @param output_dir Directory and file names where Excel files should be saved (default: "split2xls/").
 #' @param gene_col Name of the SYMBOL gene column for annotation (default: "gene").
 #' @param gene_annotation Logical. If TRUE, merges additional gene annotation data from uniprot and refseq (default: TRUE).
 #' @param overwrite Logical. If TRUE, overwrites existing Excel files (default: TRUE).
@@ -17,7 +17,7 @@ library(glue)
 split2xls <- function(df,
                       file_col = NULL,
                       sheet_col,
-                      output_dir,
+                      output_dir= file.path(getwd(), "split2xls/split2xls.xlsx"),
                       gene_col = "gene",
                       gene_annotation = TRUE,
                       overwrite = TRUE) {
@@ -29,8 +29,7 @@ split2xls <- function(df,
 
   # Ensure output directory exists
   if (!dir.exists(output_dir)) {
-    output_dir <- file.path(getwd(), "split2xls")
-    dir.create(output_dir, recursive = TRUE)
+    dir.create(dirname(output_dir), recursive = TRUE)
   }
 
   # Load gene summary data
@@ -64,7 +63,7 @@ split2xls <- function(df,
 
     # Save workbook
     saveWorkbook(xls, output_dir, overwrite = overwrite)
-    message("Created: ", output_dir))
+    message("Created: ", output_dir)
 
   } else {
     # Get unique file names
@@ -88,7 +87,7 @@ split2xls <- function(df,
       })
 
       # Save the workbook
-      file_name <- file.path(glue('{output_dir}_{file_value}.xlsx'))
+      file_name <- glue("{output_dir}_{file_value}.xlsx")
       saveWorkbook(xls, file_name, overwrite = overwrite)
       message("Created: ", file_name)
     })
