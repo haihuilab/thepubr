@@ -1,6 +1,7 @@
 library(dplyr)
 library(openxlsx)
 library(purrr)
+library(glue)
 
 #' @title Split Dataframe into Excel Files and Sheets
 #' @description Splits a dataframe into separate Excel files based on one column and organizes sheets within each file based on another column.
@@ -16,7 +17,7 @@ library(purrr)
 split2xls <- function(df,
                       file_col = NULL,
                       sheet_col,
-                      output_dir = file.path(getwd(), "split2xls"),
+                      output_dir,
                       gene_col = "gene",
                       gene_annotation = TRUE,
                       overwrite = TRUE) {
@@ -28,6 +29,7 @@ split2xls <- function(df,
 
   # Ensure output directory exists
   if (!dir.exists(output_dir)) {
+    output_dir <- file.path(getwd(), "split2xls")
     dir.create(output_dir, recursive = TRUE)
   }
 
@@ -61,9 +63,8 @@ split2xls <- function(df,
     })
 
     # Save workbook
-    file_name <- file.path(output_dir, "split_data.xlsx")
-    saveWorkbook(xls, file_name, overwrite = overwrite)
-    message("Created: ", file_name)
+    saveWorkbook(xls, output_dir, overwrite = overwrite)
+    message("Created: ", output_dir))
 
   } else {
     # Get unique file names
@@ -87,7 +88,7 @@ split2xls <- function(df,
       })
 
       # Save the workbook
-      file_name <- file.path(output_dir, paste0(file_value, ".xlsx"))
+      file_name <- file.path(glue('{output_dir}_{file_value}.xlsx'))
       saveWorkbook(xls, file_name, overwrite = overwrite)
       message("Created: ", file_name)
     })
