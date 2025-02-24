@@ -1,20 +1,22 @@
 #' Theme for publication
 #'
-#' @param base_size default font size is 12
-#' @param base_family default font is "HelveticaNeueLT Std" that requires to be install in the system
+#' @param font.size default font size is 12
+#' @param font.family default font is "HelveticaNeueLT Std" that requires to be install in the system
 #' @param axis TRUE
 #' @param grid default without grid, is FALSE, or "major", "minor", "all"
-#' @param legend.position default is "none", could be "top", "right", "bottom", or "left"
+#' @param legend.position default is "top", could be "none", "top", "right", "bottom", or "left"
+#' @param aspect.ratio default is "1": square
 #'
 #' @export
 #'
 #' theme_publication
-theme_publication <- function(base_size = 12,
-                              base_family = "HelveticaNeueLT Std",
+theme_publication <- function(font.size = 12,
+                              font.family = "HelveticaNeueLT Std",
                               axis = TRUE,
                               grid = FALSE,
                               legend.position = "top",
-                              rotate_text = NULL) {
+                              aspect.ratio = 1,
+                              rotate.text = NULL) {
 
   if(axis) {
     axis_element <- element_line(color = 'black', size =  0.2)
@@ -37,16 +39,16 @@ theme_publication <- function(base_size = 12,
     grid.minor <- element_line(color = 'grey85', size = 0.1, linetype = 1)
   }
 
-  if(!is.null(rotate_text)) {
-    x_axis_text <- element_text(angle = rotate_text,  vjust = 1, hjust=1)
+  if(!is.null(rotate.text)) {
+    x_axis_text <- element_text(angle = rotate.text,  vjust = 1, hjust=1)
   } else {
     x_axis_text <- element_text()
   }
 
-  ggthemes::theme_foundation(base_size = base_size, base_family = base_family) +
-    theme(plot.title = element_text(face = "bold", size = base_size, hjust = 0.5),
-          plot.subtitle = element_text(face = "plain", size = base_size, hjust = 0.5),
-          text = element_text(family = base_family),
+  ggthemes::theme_foundation(base_size = font.size, base_family = font.family) +
+    theme(plot.title = element_text(face = "bold", size = font.size, hjust = 0.5),
+          plot.subtitle = element_text(face = "plain", size = font.size, hjust = 0.5),
+          text = element_text(family = font.family),
           panel.background = element_rect(color = NA),
           plot.background = element_rect(color = NA),
           panel.border = element_blank(),
@@ -66,40 +68,45 @@ theme_publication <- function(base_size = 12,
           legend.position = legend.position,
           strip.background = element_rect(color="#f0f0f0",fill="#f0f0f0"),
           strip.text = element_text(face="bold"),
-          axis.text.x = x_axis_text) # rotation
+          axis.text.x = x_axis_text, # rotation
+          aspect.ratio = aspect.ratio)
 }
 
 #' Custom theme
 #'
-#' @param base_size default font size is 12
-#' @param base_family default font is : "HelveticaNeueLT Std"
+#' @param font.size default font size is 12
+#' @param font.family default font is : "HelveticaNeueLT Std"
+#' #' @param rotate.text (optional) numeric angle to rotate x-axis labels; default NULL
 #' @param border TRUE: plot has border
 #' @param axis TRUE
 #' @param grid  default is FALSE, or "major", "minor", "all"
-#' @param legend.position default is none
-#' @param facet_background defalut is 'dodgerblue4'
-#' @param facet_border defalut is 'black'
-#' @param facet_color default is 'white'
+#' @param legend.position default is "top", could be "none", "top", "right", "bottom", or "left"
+#' @param facet.background default is 'dodgerblue4'
+#' @param facet.border default is 'black'
+#' @param facet.color default is 'white'
+#' @param rotate.text (optional) numeric angle to rotate x-axis labels; default NULL
 #'
 #' @export
 #'
 # theme_border
-theme_border <- function(base_size = 12,
-                         base_family = "HelveticaNeueLT Std",
+theme_border <- function(font.size = 12,
+                         font.family = "HelveticaNeueLT Std",
                          border = TRUE,
                          axis = TRUE,
                          grid = FALSE,
                          legend.position = "top",
-                         facet_background = 'dodgerblue4',
-                         facet_border = 'black',
-                         facet_color = 'white',
-                         rotate_text = NULL) {
-  theme_pub <- theme_publication(base_size = base_size,
-                     base_family = base_family,
+                         facet.background = 'dodgerblue4',
+                         facet.border = 'black',
+                         facet.color = 'white',
+                         aspect.ratio = 1,
+                         rotate.text = NULL) {
+  theme_pub <- theme_publication(font.size = font.size,
+                     font.family = font.family,
                      axis = axis,
                      grid = grid,
                      legend.position = legend.position,
-                     rotate_text = rotate_text)
+                     aspect.ratio = aspect.ratio,
+                     rotate.text = rotate.text)
 
   if(border) {
     border_element <- element_rect(color = 'black', fill = NA, size = 0.3)
@@ -117,7 +124,8 @@ theme_border <- function(base_size = 12,
   theme_pub +
     theme(panel.background = border_element,
           plot.background = border_element,
-          axis.line = axis_element)
+          axis.line = axis_element,
+          strip.background = element_rect(fill = facet.background, color = facet.border))
 }
 
 
@@ -135,56 +143,32 @@ save_figure <- function(plot = last_plot(),
                         filename,
                         device = "pdf",
                         units = "in",
-                        size = "custom",
+                        size = c("custom", "small", "medium", "large",
+                                 "small_wide", "medium_wide", "large_wide",
+                                 "small_long", "medium_long", "large_long",
+                                 "super"),
                         width = 2.5,
                         height = 2.5,
                         gg = TRUE,
                         overwrite = TRUE) {
-  # Some default sizes
-  if (size == 'custom') {
-    w = width
-    h = height
-  }
-  if (size == 'small') {
-    w = 2.5
-    h = 2.5
-  }
-  if (size == 'medium') {
-    w = 5
-    h = 5
-  }
-  if (size == 'large') {
-    w = 10
-    h = 10
-  }
-  if (size == 'small_wide') {
-    w = 4
-    h = 2.5
-  }
-  if (size == 'medium_wide') {
-    w = 8
-    h = 5
-  }
-  if (size == 'large_wide') {
-    w = 16
-    h = 10
-  }
-  if (size == 'small_long') {
-    w = 2.5
-    h = 4
-  }
-  if (size == 'medium_long') {
-    w = 5
-    h = 8
-  }
-  if (size == 'large_long') {
-    w = 10
-    h = 16
-  }
-  if (size == 'super') {
-    w = 20
-    h = 20
-  }
+  # Use switch() to define width (w) and height (h)
+  wh <- switch(size,
+               "custom"       = c(width, height),
+               "small"        = c(2.5, 2.5),
+               "medium"       = c(5, 5),
+               "large"        = c(10, 10),
+               "small_wide"   = c(4, 2.5),
+               "medium_wide"  = c(8, 5),
+               "large_wide"   = c(16, 10),
+               "small_long"   = c(2.5, 4),
+               "medium_long"  = c(5, 8),
+               "large_long"   = c(10, 16),
+               "super"        = c(20, 20),
+               # Default if none match
+               c(width, height))
+
+  width <- wh[1]
+  height <- wh[2]
 
   # prevent overwrites----------------------------------------------------------
   i = 0
@@ -193,7 +177,7 @@ save_figure <- function(plot = last_plot(),
       while(file.exists(paste0(filename,'.', device)))
       {
         i = i + 1
-        ifilename = paste0(prefix, i)
+        filename = paste0(prefix, i)
       }
   }
 
@@ -209,9 +193,9 @@ save_figure <- function(plot = last_plot(),
   if (gg) { # for ggplot objects
       if (device == 'pdf') {
         device <- cairo_pdf
-        ggsave(filename = filename, device = device, plot = plot, width = w, height = h, units = units)
+        ggsave(filename = filename, device = device, plot = plot, width = width, height = height, units = units)
       } else {
-        ggsave(filename = filename, device = device, plot = plot, width = w, height = h, units = units, dpi = 600)
+        ggsave(filename = filename, device = device, plot = plot, width = width, height = height, units = units, dpi = 600)
       }
     }
 }
@@ -228,12 +212,12 @@ save_figure <- function(plot = last_plot(),
 # save_figure(g1, filename = "example_plot_small", size = "small_wide")
 
 #
-# g2 <- grid.arrange((scatter + scale_color_publication() + theme_publication(base_size = 24)),nrow = 1)
+# g2 <- grid.arrange((scatter + scale_color_publication() + theme_publication(font.size = 24)),nrow = 1)
 # # Medium
 # save_figure(g2, filename = "example_plot_medium", size = "medium", device = "png")
 #
 # bar <- ggplot(mtcars, aes(factor(carb),fill = factor(carb))) + geom_bar(alpha = 0.7) + labs(title = "Bar Plot")
 # # grid.arrange(bar,(bar + scale_color_publication() + theme_publication()),nrow = 1)
-# g3 <- grid.arrange((bar + scale_color_publication() + theme_publication(base_size = 48)),nrow = 1)
+# g3 <- grid.arrange((bar + scale_color_publication() + theme_publication(font.size = 48)),nrow = 1)
 ## large
 ## save_figure(g3, filename = "example_plot_large", size = "large")

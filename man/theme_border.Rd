@@ -5,22 +5,24 @@
 \title{Custom theme}
 \usage{
 theme_border(
-  base_size = 12,
-  base_family = "HelveticaNeueLT Std",
+  font.size = 12,
+  font.family = "HelveticaNeueLT Std",
   border = TRUE,
   axis = TRUE,
   grid = FALSE,
   legend.position = "top",
-  facet_background = "dodgerblue4",
-  facet_border = "black",
-  facet_color = "white",
-  rotate_text = NULL
+  facet.background = "dodgerblue4",
+  facet.border = "black",
+  facet.color = "white",
+  aspect.ratio = 1,
+  rotate.text = NULL
 )
 }
 \arguments{
-\item{base_size}{default font size is 12}
+\item{font.size}{default font size is 12}
 
-\item{base_family}{default font is : "HelveticaNeueLT Std"}
+\item{font.family}{default font is : "HelveticaNeueLT Std"
+#' @param rotate.text (optional) numeric angle to rotate x-axis labels; default NULL}
 
 \item{border}{TRUE: plot has border}
 
@@ -28,13 +30,15 @@ theme_border(
 
 \item{grid}{default is FALSE, or "major", "minor", "all"}
 
-\item{legend.position}{default is none}
+\item{legend.position}{default is "top", could be "none", "top", "right", "bottom", or "left"}
 
-\item{facet_background}{defalut is 'dodgerblue4'}
+\item{facet.background}{default is 'dodgerblue4'}
 
-\item{facet_border}{defalut is 'black'}
+\item{facet.border}{default is 'black'}
 
-\item{facet_color}{default is 'white'}
+\item{facet.color}{default is 'white'}
+
+\item{rotate.text}{(optional) numeric angle to rotate x-axis labels; default NULL}
 }
 \description{
 Custom theme

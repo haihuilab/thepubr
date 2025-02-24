@@ -5,24 +5,27 @@
 \title{Theme for publication}
 \usage{
 theme_publication(
-  base_size = 12,
-  base_family = "HelveticaNeueLT Std",
+  font.size = 12,
+  font.family = "HelveticaNeueLT Std",
   axis = TRUE,
   grid = FALSE,
   legend.position = "top",
-  rotate_text = NULL
+  aspect.ratio = 1,
+  rotate.text = NULL
 )
 }
 \arguments{
-\item{base_size}{default font size is 12}
+\item{font.size}{default font size is 12}
 
-\item{base_family}{default font is "HelveticaNeueLT Std" that requires to be install in the system}
+\item{font.family}{default font is "HelveticaNeueLT Std" that requires to be install in the system}
 
 \item{axis}{TRUE}
 
 \item{grid}{default without grid, is FALSE, or "major", "minor", "all"}
 
-\item{legend.position}{default is "none", could be "top", "right", "bottom", or "left"}
+\item{legend.position}{default is "top", could be "none", "top", "right", "bottom", or "left"}
+
+\item{aspect.ratio}{default is "1": square}
 }
 \description{
 Theme for publication
