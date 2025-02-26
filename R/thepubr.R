@@ -70,7 +70,7 @@ theme_publication <- function(font.size = 12,
           strip.text = element_text(face="bold"),
           axis.text.x = x_axis_text, # rotation
           aspect.ratio = aspect.ratio,
-          legend.text=element_text(size = font.size))
+          legend.text = element_text(size = font.size))
 }
 
 #' Custom theme
@@ -82,7 +82,7 @@ theme_publication <- function(font.size = 12,
 #' @param axis TRUE
 #' @param grid  default is FALSE, or "major", "minor", "all"
 #' @param legend.position default is "top", could be "none", "top", "right", "bottom", or "left"
-#' @param facet.background default is 'dodgerblue4'
+#' @param facet.background default is 'grey85'
 #' @param facet.border default is 'black'
 #' @param facet.color default is 'white'
 #' @param rotate.text (optional) numeric angle to rotate x-axis labels; default NULL
@@ -96,7 +96,7 @@ theme_border <- function(font.size = 12,
                          axis = TRUE,
                          grid = FALSE,
                          legend.position = "top",
-                         facet.background = 'dodgerblue4',
+                         facet.background = 'grey85',
                          facet.border = 'black',
                          facet.color = 'white',
                          aspect.ratio = 1,
