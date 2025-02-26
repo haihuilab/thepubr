@@ -69,7 +69,8 @@ theme_publication <- function(font.size = 12,
           strip.background = element_rect(color="#f0f0f0",fill="#f0f0f0"),
           strip.text = element_text(face="bold"),
           axis.text.x = x_axis_text, # rotation
-          aspect.ratio = aspect.ratio)
+          aspect.ratio = aspect.ratio,
+          legend.text=element_text(size = font.size))
 }
 
 #' Custom theme
