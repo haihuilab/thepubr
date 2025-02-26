@@ -151,21 +151,27 @@ save_figure <- function(plot = last_plot(),
                         height = 2.5,
                         gg = TRUE,
                         overwrite = TRUE) {
-  # Use switch() to define width (w) and height (h)
+  # Ensure 'size' is a single string from the valid choices
+  size <- match.arg(size, choices = c("custom", "small", "medium", "large",
+                                      "small_wide", "medium_wide", "large_wide",
+                                      "small_long", "medium_long", "large_long",
+                                      "super"))
+
   wh <- switch(size,
-               "custom"       = c(width, height),
-               "small"        = c(2.5, 2.5),
-               "medium"       = c(5, 5),
-               "large"        = c(10, 10),
-               "small_wide"   = c(4, 2.5),
-               "medium_wide"  = c(8, 5),
-               "large_wide"   = c(16, 10),
-               "small_long"   = c(2.5, 4),
-               "medium_long"  = c(5, 8),
-               "large_long"   = c(10, 16),
-               "super"        = c(20, 20),
-               # Default if none match
-               c(width, height))
+               custom      = c(width, height),
+               small       = c(2.5, 2.5),
+               medium      = c(5, 5),
+               large       = c(10, 10),
+               small_wide  = c(4, 2.5),
+               medium_wide = c(8, 5),
+               large_wide  = c(16, 10),
+               small_long  = c(2.5, 4),
+               medium_long = c(5, 8),
+               large_long  = c(10, 16),
+               super       = c(20, 20),
+               # Default if no match (though match.arg() ensures we always match)
+               c(width, height)
+  )
 
   width <- wh[1]
   height <- wh[2]
