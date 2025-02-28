@@ -10,7 +10,8 @@ theme_publication(
   axis = TRUE,
   grid = FALSE,
   legend.position = "top",
-  aspect.ratio = 1,
+  legend.font.size = 12,
+  aspect.ratio = NULL,
   rotate.text = NULL
 )
 }
@@ -24,6 +25,8 @@ theme_publication(
 \item{grid}{default without grid, is FALSE, or "major", "minor", "all"}
 
 \item{legend.position}{default is "top", could be "none", "top", "right", "bottom", or "left"}
+
+\item{legend.font.size}{default legend font size is 12}
 
 \item{aspect.ratio}{default is "1": square}
 }

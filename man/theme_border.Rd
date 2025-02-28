@@ -11,10 +11,11 @@ theme_border(
   axis = TRUE,
   grid = FALSE,
   legend.position = "top",
-  facet.background = "dodgerblue4",
+  legend.font.size = 12,
+  facet.background = "#F0F0F0",
   facet.border = "black",
   facet.color = "white",
-  aspect.ratio = 1,
+  aspect.ratio = NULL,
   rotate.text = NULL
 )
 }
@@ -32,7 +33,9 @@ theme_border(
 
 \item{legend.position}{default is "top", could be "none", "top", "right", "bottom", or "left"}
 
-\item{facet.background}{default is 'dodgerblue4'}
+\item{legend.font.size}{default legend font size is 12}
+
+\item{facet.background}{default is 'grey85'}
 
 \item{facet.border}{default is 'black'}
 

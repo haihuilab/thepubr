@@ -5,6 +5,7 @@
 #' @param axis TRUE
 #' @param grid default without grid, is FALSE, or "major", "minor", "all"
 #' @param legend.position default is "top", could be "none", "top", "right", "bottom", or "left"
+#' @param legend.font.size default legend font size is 12
 #' @param aspect.ratio default is "1": square
 #'
 #' @export
@@ -15,6 +16,7 @@ theme_publication <- function(font.size = 12,
                               axis = TRUE,
                               grid = FALSE,
                               legend.position = "top",
+                              legend.font.size = 12,
                               aspect.ratio = NULL,
                               rotate.text = NULL) {
 
@@ -70,7 +72,7 @@ theme_publication <- function(font.size = 12,
           strip.text = element_text(face="bold"),
           axis.text.x = x_axis_text, # rotation
           aspect.ratio = aspect.ratio,
-          legend.text = element_text(size = font.size))
+          legend.text = element_text(size = legend.font.size))
 }
 
 #' Custom theme
@@ -82,6 +84,7 @@ theme_publication <- function(font.size = 12,
 #' @param axis TRUE
 #' @param grid  default is FALSE, or "major", "minor", "all"
 #' @param legend.position default is "top", could be "none", "top", "right", "bottom", or "left"
+#' @param legend.font.size default legend font size is 12
 #' @param facet.background default is 'grey85'
 #' @param facet.border default is 'black'
 #' @param facet.color default is 'white'
@@ -96,6 +99,7 @@ theme_border <- function(font.size = 12,
                          axis = TRUE,
                          grid = FALSE,
                          legend.position = "top",
+                         legend.font.size = 12,
                          facet.background = "#F0F0F0",
                          facet.border = 'black',
                          facet.color = 'white',
@@ -106,6 +110,7 @@ theme_border <- function(font.size = 12,
                      axis = axis,
                      grid = grid,
                      legend.position = legend.position,
+                     legend.font.size = legend.font.size,
                      aspect.ratio = aspect.ratio,
                      rotate.text = rotate.text)
 
