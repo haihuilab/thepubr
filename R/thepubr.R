@@ -15,7 +15,7 @@ theme_publication <- function(font.size = 12,
                               axis = TRUE,
                               grid = FALSE,
                               legend.position = "top",
-                              aspect.ratio = 1,
+                              aspect.ratio = NULL,
                               rotate.text = NULL) {
 
   if(axis) {
@@ -99,7 +99,7 @@ theme_border <- function(font.size = 12,
                          facet.background = "#F0F0F0",
                          facet.border = 'black',
                          facet.color = 'white',
-                         aspect.ratio = 1,
+                         aspect.ratio = NULL,
                          rotate.text = NULL) {
   theme_pub <- theme_publication(font.size = font.size,
                      font.family = font.family,
