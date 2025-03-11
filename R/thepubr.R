@@ -206,7 +206,8 @@ save_figure <- function(plot = last_plot(),
       if (device == 'pdf') {
         device <- cairo_pdf
         ggsave(filename = filename, device = device, plot = plot, width = width, height = height, units = units)
-        ggsave(filename = filename, device = 'jpg', plot = plot, width = width, height = height, units = units, dpi = 600)
+        # also save as jpg
+        ggsave(filename = gsub("\\.pdf$", ".jpg", filename), device = 'jpg', plot = plot, width = width, height = height, units = units, dpi = 600)
       } else {
         ggsave(filename = filename, device = device, plot = plot, width = width, height = height, units = units, dpi = 600)
       }
