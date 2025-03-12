@@ -6,7 +6,7 @@
 \usage{
 pub_pal1(
   limits = c(0, 1),
-  aesthetics = c("color", "colour", "fill"),
+  aesthetics = c("color", "colour", "fill", "custom"),
   palette = c("Custom", "Spectral", "RdBu", "BrBG", "PiYG", "PRGn", "PuOr", "RdYlBu"),
   reverse = FALSE,
   n = 200
@@ -15,7 +15,7 @@ pub_pal1(
 \arguments{
 \item{limits}{rescale values, default is c(0, 1)}
 
-\item{aesthetics}{c("color", "fill")}
+\item{aesthetics}{c("color", "colour", "fill", "custom")}
 
 \item{palette}{palette color palettes}
 

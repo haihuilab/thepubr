@@ -11,7 +11,7 @@
 #' @param n the number of colors (>= 1) to be in the palette.
 #' @param limits rescale values, default is c(0, 1)
 #' @return A character vector containing color names
-#' @param aesthetics c("color", "fill")
+#' @param aesthetics c("color", "colour", "fill", "custom")
 #'
 #' @seealso Function \code{\link{colorRamppalette}}, package \code{RColorBrewer}
 #'
@@ -21,7 +21,7 @@
 #'
 pub_pal1 <-  function(
     limits = c(0, 1),
-    aesthetics = c("color", "colour", "fill"),
+    aesthetics = c("color", "colour", "fill", "custom"),
     palette = c( 'Custom', 'Spectral', 'RdBu', 'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdYlBu'),
     reverse = FALSE,
     n = 200) {
@@ -68,6 +68,10 @@ pub_pal1 <-  function(
                                   limits = limits,
                                   labels = function(x) paste0(format(round(x, 1))),
                                   oob = scales::squish)
+  }
+
+  if (aesthetics == "custom") {
+    grad <- colorRampPalette(colors)(n)
   }
 
   return(grad)
