@@ -53,9 +53,6 @@ pub_pal1 <-  function(
     colors = rev(colors)
   }
 
-  aesthetics = match.arg(aesthetics)
-  aesthetics = switch(aesthetics, color = "color", colour = "color", fill = "fill")
-
   if (aesthetics == "color") {
     grad <- scale_color_gradientn(colours = colorRampPalette(colors)(n),
                                   limits = limits,
@@ -105,7 +102,8 @@ pub_pal2 <-  function(
     reverse = FALSE,
     n = 200) {
 
-  palette = match.arg(palette)
+  aesthetics = match.arg(aesthetics)
+  aesthetics = match.arg(aesthetics, choices = c("color", "colour", "fill", "custom"))
 
   colors = switch(
     palette,
