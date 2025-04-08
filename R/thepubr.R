@@ -62,17 +62,18 @@ theme_publication <- function(font.size = 12,
           axis.ticks = axis_element,
           panel.grid.major = grid.major,
           panel.grid.minor = grid.minor,
-          legend.key = element_rect(color = NA),
-          legend.key.size = unit(0.4, "cm"),
-          legend.background = element_rect(fill = NA),
-          legend.spacing = unit(0, "cm"),
-          legend.title = element_blank(), #element_text(face="italic"),
-          legend.position = legend.position,
           strip.background = element_rect(color="#f0f0f0",fill="#f0f0f0"),
           strip.text = element_text(face="bold"),
           axis.text.x = x_axis_text, # rotation
           aspect.ratio = aspect.ratio,
-          legend.text = element_text(size = legend.font.size))
+          # legend.title = element_blank(), #element_text(face="italic"),
+          legend.position = legend.position,
+          legend.key = element_rect(color = NA),
+          legend.background = element_rect(fill = NA),
+          legend.spacing = unit(0, "cm"),
+          legend.text = element_text(size = legend.font.size)),
+          legend.key.size = unit(0.5, "cm"),
+          legend.key.width = unit(0.2, "cm")
 }
 
 #' Custom theme
