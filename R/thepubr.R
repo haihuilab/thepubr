@@ -71,10 +71,10 @@ theme_publication <- function(font.size = 12,
           legend.key = element_rect(color = NA),
           legend.background = element_rect(fill = NA),
           legend.spacing = unit(0, "cm"),
-          legend.text = element_text(size = legend.font.size)),
+          legend.text = element_text(size = legend.font.size),
           legend.key.size = unit(0.5, "cm"),
-          legend.key.width = unit(0.2, "cm")
-}
+          legend.key.width = unit(0.2, "cm"))
+  }
 
 #' Custom theme
 #'
