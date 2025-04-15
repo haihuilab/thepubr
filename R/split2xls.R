@@ -6,92 +6,92 @@ library(glue)
 #' @title Split Dataframe into Excel Files and Sheets
 #' @description Splits a dataframe into separate Excel files based on one column and organizes sheets within each file based on another column.
 #' @param df Dataframe to be split.
-#' @param file_col (Optional) Column used to determine separate Excel files. If NULL, all sheets go into one file.
-#' @param sheet_col Column used to determine different sheets within each Excel file.
-#' @param output_dir Directory and file names where Excel files should be saved (default: "split2xls/").
-#' @param gene_col Name of the SYMBOL gene column for annotation (default: "gene").
-#' @param gene_annotation Logical. If TRUE, merges additional gene annotation data from uniprot and refseq (default: TRUE).
+#' @param file.col (Optional) Column used to determine separate Excel files. If NULL, all sheets go into one file.
+#' @param sheet.col Column used to determine different sheets within each Excel file.
+#' @param output.dir Directory and file names where Excel files should be saved (default: "split2xls/").
+#' @param gene.col Name of the SYMBOL gene column for annotation (default: "gene").
+#' @param gene.annotation Logical. If TRUE, merges additional gene annotation data from uniprot and refseq (default: FALSE).
 #' @param overwrite Logical. If TRUE, overwrites existing Excel files (default: TRUE).
 #' @return Creates Excel files in the specified output directory.
 #' @export
 split2xls <- function(df,
-                      file_col = NULL,
-                      sheet_col,
-                      output_dir= file.path(getwd(), "split2xls/split2xls.xlsx"),
-                      gene_col = "gene",
-                      gene_annotation = TRUE,
+                      file.col = NULL,
+                      sheet.col,
+                      output.dir= file.path(getwd(), "split2xls/split2xls.xlsx"),
+                      gene.col = "gene",
+                      gene.annotation = FALSE,
                       overwrite = TRUE) {
 
-  # Ensure sheet_col exists
-  if (!(sheet_col %in% colnames(df))) {
-    stop("Error: Dataframe is missing required column: ", sheet_col)
+  # Ensure sheet.col exists
+  if (!(sheet.col %in% colnames(df))) {
+    stop("Error: Dataframe is missing required column: ", sheet.col)
   }
 
   # Ensure output directory exists
-  if (!dir.exists(output_dir)) {
-    dir.create(dirname(output_dir), recursive = TRUE)
+  if (!dir.exists(output.dir)) {
+    dir.create(dirname(output.dir), recursive = TRUE)
   }
 
   # Load gene summary data
-  annotation_file <- system.file("extdata", "gene_functions_from_uniprot_refseq.csv", package = "thepubr")
+  annotation.file <- system.file("extdata", "gene.functions.from.uniprot.refseq.csv", package = "thepubr")
 
-  if (gene_annotation && file.exists(annotation_file)) {
-    gene_summary <- read.csv(annotation_file)
+  if (gene.annotation && file.exists(annotation.file)) {
+    gene.summary <- read.csv(annotation.file)
 
     # Merge gene annotation if gene column exists
-    if (gene_col %in% colnames(df)) {
+    if (gene.col %in% colnames(df)) {
       df <- df %>%
-        left_join(gene_summary, by = setNames("gene", gene_col))
+        left.join(gene.summary, by = setNames("gene", gene.col))
     } else {
       message("Warning: Gene column not found in the dataframe. Skipping annotation.")
     }
   }
 
-  # If file_col is NULL, create a single Excel file
-  if (is.null(file_col)) {
+  # If file.col is NULL, create a single Excel file
+  if (is.null(file.col)) {
     xls <- createWorkbook()
 
     # Process unique sheets
-    unique_sheets <- df %>% distinct(.data[[sheet_col]]) %>% pull()
-    walk(unique_sheets, function(sheet_value) {
-      sheet_df <- df %>% filter(.data[[sheet_col]] == sheet_value)
-      if (nrow(sheet_df) > 0) {  # Avoid adding empty sheets
-        addWorksheet(xls, as.character(sheet_value))
-        writeData(xls, sheet = as.character(sheet_value), x = sheet_df)
+    unique.sheets <- df %>% distinct(.data[[sheet.col]]) %>% pull()
+    walk(unique.sheets, function(sheet.value) {
+      sheet.df <- df %>% filter(.data[[sheet.col]] == sheet.value)
+      if (nrow(sheet.df) > 0) {  # Avoid adding empty sheets
+        addWorksheet(xls, as.character(sheet.value))
+        writeData(xls, sheet = as.character(sheet.value), x = sheet.df)
       }
     })
 
     # Save workbook
-    saveWorkbook(xls, output_dir, overwrite = overwrite)
-    message("Created: ", output_dir)
+    saveWorkbook(xls, output.dir, overwrite = overwrite)
+    message("Created: ", output.dir)
 
   } else {
     # Get unique file names
-    unique_files <- df %>% distinct(.data[[file_col]]) %>% pull()
+    unique.files <- df %>% distinct(.data[[file.col]]) %>% pull()
 
     # Process each unique file
-    walk(unique_files, function(file_value) {
-      subset_df <- df %>% filter(.data[[file_col]] == file_value)
+    walk(unique.files, function(file.value) {
+      subset.df <- df %>% filter(.data[[file.col]] == file.value)
 
       # Create Excel workbook
       xls <- createWorkbook()
 
       # Process unique sheets
-      unique_sheets <- subset_df %>% distinct(.data[[sheet_col]]) %>% pull()
-      walk(unique_sheets, function(sheet_value) {
-        sheet_df <- subset_df %>% filter(.data[[sheet_col]] == sheet_value)
-        if (nrow(sheet_df) > 0) {  # Avoid adding empty sheets
-          addWorksheet(xls, as.character(sheet_value))
-          writeData(xls, sheet = as.character(sheet_value), x = sheet_df)
+      unique.sheets <- subset.df %>% distinct(.data[[sheet.col]]) %>% pull()
+      walk(unique.sheets, function(sheet.value) {
+        sheet.df <- subset.df %>% filter(.data[[sheet.col]] == sheet.value)
+        if (nrow(sheet.df) > 0) {  # Avoid adding empty sheets
+          addWorksheet(xls, as.character(sheet.value))
+          writeData(xls, sheet = as.character(sheet.value), x = sheet.df)
         }
       })
 
       # Save the workbook
-      file_name <- glue("{output_dir}_{file_value}.xlsx")
-      saveWorkbook(xls, file_name, overwrite = overwrite)
-      message("Created: ", file_name)
+      file.name <- glue("{output.dir}.{file.value}.xlsx")
+      saveWorkbook(xls, file.name, overwrite = overwrite)
+      message("Created: ", file.name)
     })
   }
 
-  message("Excel files successfully created in: ", output_dir)
+  message("Excel files successfully created in: ", output.dir)
 }
