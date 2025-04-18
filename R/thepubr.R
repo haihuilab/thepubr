@@ -47,6 +47,11 @@ theme_publication <- function(font.size = 12,
     x_axis_text <- element_text()
   }
 
+  # legend
+  is.horizontal <- legend.position %in% c("top", "bottom")
+  legend.height <- ifelse(is.horizontal, 0.5, 0.2)
+  legend.width  <- ifelse(is.horizontal, 0.2, 0.5)
+
   ggthemes::theme_foundation(base_size = font.size, base_family = font.family) +
     theme(plot.title = element_text(face = "bold", size = font.size, hjust = 0.5),
           plot.subtitle = element_text(face = "plain", size = font.size, hjust = 0.5),
@@ -72,8 +77,8 @@ theme_publication <- function(font.size = 12,
           legend.background = element_rect(fill = NA),
           legend.spacing = unit(0, "cm"),
           legend.text = element_text(size = legend.font.size),
-          legend.key.size = unit(0.5, "cm"),
-          legend.key.width = unit(0.2, "cm"))
+          legend.key.size = unit(legend.height, "cm"),
+          legend.key.width = unit(legend.width, "cm"))
   }
 
 #' Custom theme
